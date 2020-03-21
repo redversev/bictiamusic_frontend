@@ -1,0 +1,76 @@
+<app-principal></app-principal>
+
+<div class="registro" id="registro">
+  <div class="contentRegistro">
+    <div class="titleRegistro">
+      <h1>Registro de usuario</h1>
+    </div>
+    <form class="form">
+      <!--usuario-->
+      <input
+        class="input"
+        type="text"
+        placeholder="Usuario:"
+        required
+        max="20"
+      />
+
+      <!--password-->
+      <input
+        class="input"
+        type="password"
+        placeholder="Contraseña:"
+        required
+        max="20"
+      />
+      <!--Confirmar-password-->
+      <input
+        class="input"
+        type="password"
+        placeholder="Confirme Contraseña:"
+        required
+        max="20"
+      />
+      <!--nombres-->
+      <input
+        class="input"
+        type="text"
+        placeholder="Nombres:"
+        required
+        max="20"
+      />
+
+      <!--apellido-->
+      <input
+        class="input"
+        type="text"
+        placeholder="Apellidos:"
+        required
+        max="20"
+      />
+
+      <!--fechaNacimiento-->
+      <input class="input" type="date" placeholder="Fecha Nacimiento:" />
+
+      <div class="aceptarTerminos">
+        <input
+          type="checkbox"
+          id="terminosCondiciones"
+          name="terminosCondiciones"
+          value="terminosCondiciones"
+        />
+
+        <label for="terminosCondiciones">Acepta terminos y condiciones</label>
+      </div>
+
+      <div class="contentButtons">
+        <button type="button" class="buttonRegister" routerLink="">
+          Cancelar
+        </button>
+        <button type="submit" class="buttonRegister" routerLink="">
+          Ingresar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

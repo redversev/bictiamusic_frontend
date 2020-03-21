@@ -1,0 +1,72 @@
+.contentButtons {
+  width: 100%;
+  margin: 25px 0 0 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.session {
+  position: absolute;
+  right: 1px;
+  top: 0;
+  width: 100%;
+  max-width: 500px;
+  height: 100vh;
+  background: rgb(202, 221, 229, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s all ease;
+}
+.viewSession {
+  right: 0;
+}
+
+.contentLogin {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+.titleLogin {
+  font-size: calc(0.5vw + 0.3rem);
+  width: 100%;
+  font-family: "Bellota Text", cursive;
+  color: #1e4069;
+  text-align: end;
+}
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.input {
+  font-size: calc(1vw + 0.1rem);
+  color: #212121;
+  margin: 6px 0 6px 0;
+  border-radius: 40px;
+  padding: 5px;
+  background: white;
+  outline: none;
+  text-decoration: none;
+}
+
+.buttonLogin {
+  color: #cadde5;
+  background-color: #1e4069;
+  border: 1px solid #1e4069;
+  border-radius: 10px;
+  padding: 5px 15px;
+  margin: 0 5px;
+  cursor: pointer;
+  outline: none;
+}
+.buttonLogin:hover {
+  color: #1e4069;
+  border: 1px solid #1e4069;
+  border-radius: 10px;
+  padding: 5px 15px;
+  margin: 0 5px;
+  cursor: pointer;
+  background: rgb(202, 221, 229, 0.7);
+  outline: none;
+}

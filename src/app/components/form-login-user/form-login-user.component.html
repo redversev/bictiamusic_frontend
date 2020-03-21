@@ -1,0 +1,33 @@
+<app-principal></app-principal>
+
+<div class="session" id="session">
+  <div class="contentLogin">
+    <div class="titleLogin">
+      <h1>Iniciar Sesión</h1>
+    </div>
+    <form class="form">
+      <!--username-->
+      <input
+        class="input"
+        type="text"
+        placeholder="Usuario"
+        required
+        max="20"
+      />
+      <!--password-->
+      <input
+        class="input"
+        type="password"
+        placeholder="Contraseña"
+        required
+        max="20"
+      />
+      <div class="contentButtons">
+        <button type="button" class="buttonLogin" routerLink="">
+          Cancelar
+        </button>
+        <button type="submit" class="buttonLogin" routerLink="">Iniciar</button>
+      </div>
+    </form>
+  </div>
+</div>
