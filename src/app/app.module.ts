@@ -8,11 +8,20 @@ import { PrincipalComponent } from "./components/principal/principal.component";
 import { NavLoginComponent } from "./components/nav-login/nav-login.component";
 import { FormLoginUserComponent } from "./components/form-login-user/form-login-user.component";
 import { FormRegisterUserComponent } from "./components/form-register-user/form-register-user.component";
+import { MusicListComponent } from './components/music-list/music-list.component';
+import { MusicAdminComponent } from './components/music-admin/music-admin.component';
+import { FormModifyUserComponent } from './components/form-modify-user/form-modify-user.component';
+import { NavOptionsComponent } from './components/nav-options/nav-options.component';
+import { SearchComponent } from './components/search/search.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { NavDashboardComponent } from './components/nav-dashboard/nav-dashboard.component';
+import { MusicControlsComponent } from './components/music-controls/music-controls.component';
 
 const register: Routes = [
   { path: "registerUser", component: FormRegisterUserComponent },
   { path: "", component: PrincipalComponent },
-  { path: "loginUser", component: FormLoginUserComponent }
+  { path: "loginUser", component: FormLoginUserComponent },
+  { path: "dashboard", component:  DashboardComponent}
 ];
 
 @NgModule({
@@ -21,7 +30,15 @@ const register: Routes = [
     PrincipalComponent,
     NavLoginComponent,
     FormLoginUserComponent,
-    FormRegisterUserComponent
+    FormRegisterUserComponent,
+    MusicListComponent,
+    MusicAdminComponent,
+    FormModifyUserComponent,
+    NavOptionsComponent,
+    SearchComponent,
+    DashboardComponent,
+    NavDashboardComponent,
+    MusicControlsComponent
   ],
   imports: [BrowserModule, FormsModule, RouterModule.forRoot(register)],
   providers: [],

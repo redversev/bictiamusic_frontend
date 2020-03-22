@@ -1,0 +1,43 @@
+.musicList{
+    height: calc(100vh - 160px);
+    background-image: url(/assets/images/backgrounds/backgroundConcert.png);
+    background-size: cover;
+    color: white;
+    overflow: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+.musicList .list{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin: auto;
+    max-width: 1200px;
+}
+.musicList .list .song{
+    width: 250px;
+    height: 250px;
+    background-color: rgba(255,255, 255, 0.3);
+    margin: 10px;
+    padding: 10px;
+    color: white;
+    font-size: 2em;
+    border-radius: 4px;
+    transition: .5s all ease;
+}
+.musicList .list .song:hover{
+    background-color: rgba(255,255, 255, 0.5);
+    color: grey;
+}
+
+
+@media only screen and (max-width: 1200px) {
+
+    .musicList .list .song{
+        width: 150px;
+        height: 150px;
+    }
+}
