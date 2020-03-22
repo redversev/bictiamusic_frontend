@@ -1,0 +1,6 @@
+.dashboard{
+    height: 100vh;
+}
+.musicList{
+    height: calc(100vh - 180px);
+}
