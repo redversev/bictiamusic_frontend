@@ -64,7 +64,8 @@ export class MusicListComponent implements OnInit {
       album: 'Grasp of the Undying'
     },
     {
-      songUrl: 'assets/music/disks/AhoraTuAdessoTu',
+
+      songUrl: 'assets/music/AhoraTuAdessoTu',
       title: 'Adesso tu',
       author: 'Eros Ramazzotti',
       album: 'Eros e²'
