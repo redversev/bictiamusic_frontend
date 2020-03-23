@@ -1,11 +1,19 @@
 <section class="musicList">
   <div class="list">
     <div *ngFor="let song of songs" class="song" (click)="changeSong(song.songUrl)">
-      <button (click)="changeSong(song.songUrl)">
-        <img src="{{ song.image }}" alt="{{ song.title }}">
-        <!-- <span> {{ song.author }} - {{ song.title }}</span> -->
-        <!-- Falta la condición para cuando la canción no tenga imagen -->
-      </button>
+
+      <ng-container *ngIf="song.image; else noImage">
+          <button>
+            <img src="{{ song.image }}" alt="{{ song.title }}">
+          </button>
+        </ng-container>
+        
+        <ng-template #noImage>
+          <button>
+            <img src="assets/images/disks/disk2.jpg" alt="{{ song.title }}">
+        </button>
+        </ng-template>
+
       <div class="details">
         <div>
           {{ song.title }} <br>{{ song.author }}
