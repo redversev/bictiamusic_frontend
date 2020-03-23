@@ -1,11 +1,20 @@
 <div class="dashboardNav">
     <div class="content">
         <div class="logo">
-            <img src="../assets/images/logos/logo_2_blanco.png" alt="Bitcia Music">
+            <img src="assets/images/logos/logo_2_blanco.png" alt="Bitcia Music">
         </div>
-        <div>SEARCH</div>
+        <div class="input-placeholder">
+          <input type="search" required />
+          <div class="placeholder">
+            Buscar canciones <img src="assets/images/iconos/busqueda.png" alt="">
+          </div>
+        </div>
         <div class="navOptions">
-            navOptions
+          <p class="nombre">Hola {{ name }}</p>
+          <img src="assets/images/iconos/search.png" class="search" alt="">
+          <a href="#"><img src="assets/images/iconos/favorito.png" alt="" /></a>
+          <a href="#"><img src="assets/images/iconos/usuario.png" alt="" /></a>
+          <a href="#"><img src="assets/images/iconos/candado.png" alt="" /></a>
         </div>
     </div>
 </div>

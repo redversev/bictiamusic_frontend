@@ -1,9 +1,9 @@
 .dashboardNav{
     background-color: #1E4069;
-    color: white;
     width: 100%;
     height: 60px;
     display: flex;
+		flex-wrap: wrap;
     align-items: center;
 }
 .dashboardNav .content{
@@ -17,8 +17,94 @@
     box-sizing: border-box;
 }
 .dashboardNav .content .logo{
-    max-width: 250px;
+    width: 250px;
 }
 .dashboardNav .content .logo img{
     max-width: 100%;
+}
+
+/* ESTILOS DEL INPUT  */
+
+.input-placeholder {
+  position: relative;
+	width: 400px;
+}
+
+.input-placeholder input {
+  height: 50px;
+  width: 100%;
+  border-radius: 50px;
+  border-style: none;
+  padding: 10px 30px;
+  font-size: 12pt;
+}
+
+.input-placeholder input:invalid + .placeholder {
+  display: flex;
+  border-style: none;
+}
+
+.placeholder {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 32%;
+  align-items: center;
+  height: 25px;
+  font-size: 10pt;
+  display: none;
+}
+
+.placeholder img {
+  margin-left: 5px
+}
+
+/* ESTILOS DE NAV-OPTIONS */
+
+
+.navOptions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-grow: 0;
+}
+
+.nombre {
+  color: white;
+  font-family: 'Bellota Text', cursive;
+  font-size: 14pt;
+  font-weight: bold;
+}
+
+.navOptions img {
+  margin-left: 15px;
+}
+
+.search {
+  display: none;
+}
+
+/* MEDIA QUERIES */
+
+@media only screen and (max-width: 1200px) {
+   .dashboardNav .content .logo{
+    width: 160px;
+	}
+  .input-placeholder {
+		width: 100%;
+		order: 1;
+		display: none;
+  }
+  .navOptions .nombre {
+    display: none;
+  }
+  .navOptions img {
+		margin-left: 5px;
+    width: 30px;
+    height: 30px;
+  }
+  .search {
+    display: block;
+  }
 }
