@@ -1,0 +1,19 @@
+.search input{
+    padding: 10px 30px 10px 10px;
+    border: none;
+    border-radius: 20px;
+    text-align: center;
+    min-width: 300px;
+    margin: 5px;
+    background-image: url(/assets/images/iconos/busqueda.png);
+    background-position: 95% 50%;
+    background-repeat: no-repeat;
+    font-size: 1.2em;
+}
+
+@media only screen and (max-width: 1200px) {
+    .search input{
+        min-width: initial;
+    }
+    
+}
