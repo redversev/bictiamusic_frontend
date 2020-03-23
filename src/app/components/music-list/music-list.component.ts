@@ -37,7 +37,7 @@ export class MusicListComponent implements OnInit {
     },
     {
       image: 'assets/images/albumCover.jpg',
-      songUrl: 'assets/music/InfinityEdge.mp3',
+      songUrl: 'assets/music/InfinityEdge',
       title: 'Infinity Edge',
       author: 'Pentakill',
       album: 'Grasp of the Undying'
@@ -78,6 +78,12 @@ export class MusicListComponent implements OnInit {
       album: 'Grasp of the Undying'
     }
   ];
+
+  changeSong(urlSong) {
+    const video: HTMLMediaElement = document.getElementById('bictiaMusic') as HTMLMediaElement;
+    video.setAttribute('src', urlSong + '.mp3');
+    video.play();
+  }
 
   constructor() { }
 

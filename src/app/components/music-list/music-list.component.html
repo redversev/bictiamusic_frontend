@@ -1,7 +1,7 @@
 <section class="musicList">
   <div class="list">
     <div *ngFor="let song of songs" class="song">
-      <button>
+      <button (click)="changeSong(song.songUrl)">
         <img src="assets/images/disk1.jpg" alt="Imagen">
         <!-- <span> {{ song.author }} - {{ song.title }}</span> -->
       </button>
