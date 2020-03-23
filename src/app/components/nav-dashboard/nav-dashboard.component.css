@@ -42,6 +42,7 @@
 .input-placeholder input:invalid + .placeholder {
   display: flex;
   border-style: none;
+  font-size: 1.3em;
 }
 
 .placeholder {
@@ -52,12 +53,12 @@
   left: 32%;
   align-items: center;
   height: 25px;
-  font-size: 10pt;
   display: none;
 }
 
 .placeholder img {
-  margin-left: 5px
+  margin-left: 5px;
+  width: 30px;
 }
 
 /* ESTILOS DE NAV-OPTIONS */

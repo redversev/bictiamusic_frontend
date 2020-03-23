@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nav-dashboard.component.css']
 })
 export class NavDashboardComponent implements OnInit {
-  name: string = "Redvers";
+  name: string = "NombreUsuario";
 
   constructor() { }
 

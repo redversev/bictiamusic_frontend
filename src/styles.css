@@ -1,9 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css?family=Bellota+Text&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Bellota+Text:700&display=swap');
 
 body{
     margin: 0;
+    font-family: 'Bellota Text', cursive;
 }
 p {
     margin: 0;

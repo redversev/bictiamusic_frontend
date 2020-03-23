@@ -1,10 +1,24 @@
 <section class="musicList">
   <div class="list">
-    <div *ngFor="let song of songs" class="song">
+    <div *ngFor="let song of songs" class="song" (click)="changeSong(song.songUrl)">
       <button (click)="changeSong(song.songUrl)">
-        <img src="assets/images/disk1.jpg" alt="Imagen">
+        <img src="{{ song.image }}" alt="{{ song.title }}">
         <!-- <span> {{ song.author }} - {{ song.title }}</span> -->
+        <!-- Falta la condición para cuando la canción no tenga imagen -->
       </button>
+      <div class="details">
+        <div>
+          {{ song.title }} <br>{{ song.author }}
+        </div>
+        <div class="botonFav">
+          <div class="botonFavOff">
+            <img src="/assets/images/iconos/botonAgregar.png" alt="Me gusta esta canción">            
+          </div>
+          <div class="botonFavOn">
+            <img src="/assets/images/iconos/botonFavorito.png" alt="Me gusta esta canción">            
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
