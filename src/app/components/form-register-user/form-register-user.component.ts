@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../../models/user';
 import { Form } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserService } from '../../service/user.service'; 
 
 @Component({
   selector: 'app-form-register-user',
@@ -16,7 +17,9 @@ export class FormRegisterUserComponent implements OnInit {
   public formLogin: Form;
 
   constructor( 
-    private router:Router
+    private router:Router,
+    private service: UserService,
+
   ) { 
     this.user = new User();
   } 
@@ -45,10 +48,24 @@ export class FormRegisterUserComponent implements OnInit {
       }
       else{
         alert("Los datos son correctos, se procederá al registro en la API.");
-        this.router.navigate(['loginUser']);
+        this.signUpUser();
+        // this.router.navigate(['loginUser']);
       }
 
     }
+  }
+
+  signUpUser() {
+    this.service.signUpUser(this.user).subscribe( (res:any) => {
+      if( res.statusCode !== 200){
+        alert("Error al crear el usuario");
+        console.log("esta es la respuesta: " +res)
+      }
+      else{
+        alert("Usuario creado correctamente");
+      }
+
+    })
   }
 
   
