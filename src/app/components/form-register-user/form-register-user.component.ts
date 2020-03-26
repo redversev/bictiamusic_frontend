@@ -65,6 +65,7 @@ export class FormRegisterUserComponent implements OnInit {
         }, 5000);
       }
       else{
+        alert("Usuario registrado satisfactoriamente: "+this.lastUser);
         localStorage.setItem('lastUser', this.lastUser);
         this.router.navigate(['loginUser']);
       }
