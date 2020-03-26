@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../models/user';
 import { Form } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form-register-user',
@@ -14,7 +15,9 @@ export class FormRegisterUserComponent implements OnInit {
   public messageError = "Los datos del formulario son incorrectos.";
   public formLogin: Form;
 
-  constructor( ) { 
+  constructor( 
+    private router:Router
+  ) { 
     this.user = new User();
   } 
 
@@ -41,8 +44,8 @@ export class FormRegisterUserComponent implements OnInit {
           }, 3000);
       }
       else{
-        alert("Los datos son correctos");
-        console.log("Aquí va la conexión con la API");
+        alert("Los datos son correctos, se procederá al registro en la API.");
+        this.router.navigate(['loginUser']);
       }
 
     }
