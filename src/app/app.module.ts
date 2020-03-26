@@ -2,6 +2,8 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { Routes, RouterModule } from "@angular/router";
+import { UserService } from './service/user.service'; //nueva para la conexion con
+import { HttpClientModule } from '@angular/common/http'; //las llamadas http
 
 import { AppComponent } from "./app.component";
 import { PrincipalComponent } from "./components/principal/principal.component";
@@ -42,8 +44,10 @@ const register: Routes = [
     MusicControlsComponent,
     AboutUsComponent
   ],
-  imports: [BrowserModule, FormsModule, RouterModule.forRoot(register)],
-  providers: [],
+  imports: [BrowserModule, FormsModule, RouterModule.forRoot(register), HttpClientModule],
+  providers: [
+    UserService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
