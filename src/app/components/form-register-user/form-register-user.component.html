@@ -3,72 +3,51 @@
 <div class="registro" id="registro">
   <div class="contentRegistro">
     <div class="titleRegistro">
-      <h1>Registro de usuario</h1>
+      <h1 *ngIf="!isError">Registro de usuario</h1>
     </div>
-    <form class="form">
-      <!--usuario-->
-      <input
-        class="input"
-        type="text"
-        placeholder="Usuario:"
-        required
-        max="20"
-      />
 
-      <!--password-->
-      <input
-        class="input"
-        type="password"
-        placeholder="Contraseña:"
-        required
-        max="20"
-      />
-      <!--Confirmar-password-->
-      <input
-        class="input"
-        type="password"
-        placeholder="Confirme Contraseña:"
-        required
-        max="20"
-      />
+    <div class="mensajes" id="message" *ngIf="isError">{{messageError}}</div>
+
+    <form class="form" #formLogin="ngForm" (ngSubmit)="validateForm(formLogin);" novalidate>
+      <!--usuario-->
+      <input class="input" type="email" name="email" id="email" placeholder="Ingrese su correo electrónico:" required #email="ngModel" [(ngModel)]="user.email" />
+
       <!--nombres-->
-      <input
-        class="input"
-        type="text"
-        placeholder="Nombres:"
-        required
-        max="20"
-      />
+      <input class="input" type="text" name="firstName" id="firstName" placeholder="Ingrese su nombre:" required
+        max="20" #firstName="ngModel" [(ngModel)]="user.firstName"/>
 
       <!--apellido-->
-      <input
-        class="input"
-        type="text"
-        placeholder="Apellidos:"
-        required
-        max="20"
-      />
+      <input class="input" type="text" name="lastName" id="lastName" placeholder="Ingrese su apellido:" required
+        max="20" #lastName="ngModel" [(ngModel)]="user.lastName"/>
 
-      <!--fechaNacimiento-->
-      <input class="input" type="date" placeholder="Fecha Nacimiento:" />
+      <!--teléfono-->
+      <input class="input" type="text" name="phone" id="phone" placeholder="Ingrese su número de teléfono:" required
+        max="10" #phone="ngModel" [(ngModel)]="user.phone"/>
+
+      <!--password-->
+      <input class="input" type="password" name="password" id="password" placeholder="Establezca una contraseña:"
+        required max="20" #password="ngModel" [(ngModel)]="user.password" />
+
+      <!--Confirmar-password-->
+      <input class="input" type="password" name="passwordConfirm" id="passwordConfirm"
+        placeholder="Confirme su contraseña:" required max="20" #passwordConfirm="ngModel" [(ngModel)]="user.passwordConfirm" />
 
       <div class="aceptarTerminos">
-        <input
-          type="checkbox"
-          id="terminosCondiciones"
-          name="terminosCondiciones"
-          value="terminosCondiciones"
-        />
+        <input type="checkbox" id="terms" name="terms" #terms="ngModel" [(ngModel)]="user.terms" required>
 
         <label for="terminosCondiciones">Acepta terminos y condiciones</label>
       </div>
 
+      Email: {{formLogin.value.email}} <br>
+      Nombre: {{formLogin.value.firstName}} <br>
+      Apellido: {{formLogin.value.lastName}} <br>
+      Phone: {{formLogin.value.phone}} <br>
+      Términos y Condiciones: {{formLogin.value.terms}} 
+
       <div class="contentButtons">
-        <button type="button" class="buttonRegister" routerLink="">
-          Cancelar
-        </button>
-        <button type="submit" class="buttonRegister" routerLink="">
-          Ingresar
+        <a routerLink="" class="button"> Cancelar </a>
+        <button class="button" id="buttonRegister">
+          Registrar
         </button>
       </div>
     </form>

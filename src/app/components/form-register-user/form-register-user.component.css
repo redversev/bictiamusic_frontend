@@ -4,7 +4,7 @@
   display: flex;
   justify-content: space-around;
 }
-.buttonRegister {
+.button{
   color: #cadde5;
   background-color: #1e4069;
   border: 1px solid #1e4069;
@@ -14,8 +14,9 @@
   cursor: pointer;
   outline: none;
   font-size: 1em;
+  text-decoration: none;
 }
-.buttonRegister:hover {
+.button:hover {
   color: #1e4069;
   border: 1px solid #1e4069;
   border-radius: 10px;
@@ -80,4 +81,14 @@
   background: white;
   outline: none;
   text-decoration: none;
+}
+.mensajes{
+  border-radius: 5px;
+  border: 1px solid red;
+  padding: 5px 10px;
+  margin: 5px;
+  background-color: rgba(255,0,0,0.05);
+  color: red;
+  text-align: center;
+  transition: .5s all ease;
 }
