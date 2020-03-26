@@ -38,11 +38,15 @@
         <label for="terminosCondiciones">Acepta terminos y condiciones</label>
       </div>
 
-      Email: {{formLogin.value.email}} <br>
-      Nombre: {{formLogin.value.firstName}} <br>
-      Apellido: {{formLogin.value.lastName}} <br>
-      Phone: {{formLogin.value.phone}} <br>
-      Términos y Condiciones: {{formLogin.value.terms}} 
+      <div class="developes" style="display:none;">
+        Contenido para efectos de desarrollo: <br>
+        Email: {{formLogin.value.email}} <br>
+        Nombre: {{formLogin.value.firstName}} <br>
+        Apellido: {{formLogin.value.lastName}} <br>
+        Phone: {{formLogin.value.phone}} <br>
+        Términos y Condiciones: {{formLogin.value.terms}} 
+      </div>
+
 
       <div class="contentButtons">
         <a routerLink="" class="button"> Cancelar </a>
