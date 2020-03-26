@@ -16,6 +16,7 @@ import { SearchComponent } from './components/search/search.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NavDashboardComponent } from './components/nav-dashboard/nav-dashboard.component';
 import { MusicControlsComponent } from './components/music-controls/music-controls.component';
+import { AboutUsComponent } from './components/about-us/about-us.component';
 
 const register: Routes = [
   { path: "registerUser", component: FormRegisterUserComponent },
@@ -38,7 +39,8 @@ const register: Routes = [
     SearchComponent,
     DashboardComponent,
     NavDashboardComponent,
-    MusicControlsComponent
+    MusicControlsComponent,
+    AboutUsComponent
   ],
   imports: [BrowserModule, FormsModule, RouterModule.forRoot(register)],
   providers: [],

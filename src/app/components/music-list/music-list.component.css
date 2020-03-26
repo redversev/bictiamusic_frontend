@@ -15,7 +15,7 @@
     align-items: flex-start;
     flex-wrap: wrap;
     margin: auto;
-    max-width: 1200px;
+    max-width: 850px;
 }
 
 .musicList .list button {
@@ -32,8 +32,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 250px;
-    height: 250px;
+    width: 200px;
+    height: 200px;
     opacity: 0.5;
     margin: 6px;
     padding: 3px;
