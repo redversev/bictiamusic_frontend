@@ -5,16 +5,38 @@
     <div class="titleLogin">
       <h1>Iniciar Sesión</h1>
     </div>
-    <form class="form">
-      <!--username-->
-      <input class="input" type="text" placeholder="Ingrese su correo electrónico" id="email" name="email" required max="20" value="{{lastUser}}" />
+    <form #loginForm="ngForm" (ngSubmit)="login()">
+      <!--correo-->
+      <input
+        class="input"
+        type="email"
+        id="email"
+        name="email"
+        placeholder="Ingrese su correo electrónico"
+        value="{{ lastUser }}"
+        #email="ngModel"
+        [(ngModel)]="user.email"
+      />
+      <br />
       <!--password-->
-      <input class="input" type="password" id="password" name="password" placeholder="Introduzca su contraseña" required max="20" />
+      <input
+        class="input"
+        type="password"
+        name="password"
+        id="password"
+        placeholder="ingrese su contraseña:"
+        #password="ngModel"
+        [(ngModel)]="user.password"
+      />
+      <br />
+
       <div class="contentButtons">
         <button type="button" class="buttonLogin" routerLink="">
           Cancelar
         </button>
-        <button type="submit" class="buttonLogin" routerLink="">Iniciar</button>
+        <button class="button" id="buttonLogin">
+          Ingresar
+        </button>
       </div>
     </form>
   </div>
