@@ -1,3 +1,8 @@
+.search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .search input{
     padding: 10px 30px 10px 10px;
     border: none;
@@ -9,6 +14,16 @@
     background-position: 95% 50%;
     background-repeat: no-repeat;
     font-size: 1.2em;
+}
+.buscarCancion {
+    background-image: url(/assets/images/iconos/search.png);
+    background-color: transparent;
+    color: transparent;
+    background-size: 40px;
+    background-position: center center;
+    width: 40px;
+    height: 40px;
+    border: none;
 }
 
 @media only screen and (max-width: 1200px) {
