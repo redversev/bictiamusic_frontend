@@ -13,6 +13,7 @@ export class NavDashboardComponent implements OnInit {
   public role = null;
   public class = null;
   public user: User;
+  public rojo: Boolean = false;
 
   constructor() { 
     this.user = new User();
@@ -29,6 +30,10 @@ export class NavDashboardComponent implements OnInit {
     if(this.role!="USER"){
       this.class="dashboardNavAdmin";
     }
+  }
+  abrirBuscador(){
+    alert("hi");
+    
   }
 
 }

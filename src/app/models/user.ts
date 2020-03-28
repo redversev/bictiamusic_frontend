@@ -8,4 +8,5 @@ export class User {
     passwordConfirm: String;
     image: String;
     terms: boolean;
+  role: any;
 }
