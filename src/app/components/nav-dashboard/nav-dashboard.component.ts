@@ -10,6 +10,8 @@ import { Router, RouterLink } from "@angular/router";
 })
 export class NavDashboardComponent implements OnInit {
   public userName = null;
+  public role = null;
+  public class = null;
   public user: User;
 
   constructor() { 
@@ -23,7 +25,10 @@ export class NavDashboardComponent implements OnInit {
   getUserName() {
     this.user = JSON.parse(localStorage.getItem("user"));
     this.userName = this.user.firstName + " " + this.user.lastName;
-    console.log("-> "+this.userName);
+    this.role = this.user.role;
+    if(this.role!="USER"){
+      this.class="dashboardNavAdmin";
+    }
   }
 
 }
