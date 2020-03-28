@@ -24,7 +24,8 @@ const register: Routes = [
   { path: "registerUser", component: FormRegisterUserComponent },
   { path: "", component: PrincipalComponent },
   { path: "loginUser", component: FormLoginUserComponent },
-  { path: "dashboard", component:  DashboardComponent}
+  { path: "dashboard", component:  DashboardComponent},
+  { path: "admin", component: MusicAdminComponent }
 ];
 
 @NgModule({

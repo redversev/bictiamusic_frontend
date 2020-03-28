@@ -1,1 +1,49 @@
-<p>music-admin works!</p>
+<section class="musicList">
+    <div class="list">
+        <table class="table table-dark">
+          <!--<thead>
+            <tr>
+              <th scope="col">Image</th>
+              <th scope="col">Title</th>
+              <th scope="col">Autor</th>
+              <th scope="col">Delete</th>
+              <th scope="col">Modify</th>
+            </tr>
+          </thead>--->
+          <tbody> 
+            <tr *ngFor=" let song of songs" class="song">
+              <th scope="row"> 
+                
+                <ng-container *ngIf="song.image; else noImage">
+                  <button>
+                    <img src="{{ song.image }}" alt="{{ song.title }}">
+                  </button>
+                </ng-container>
+                
+                <ng-template #noImage>
+                  <button>
+                    <img src="assets/images/disks/disk2.jpg" alt="{{ song.title }}">
+                </button>
+                </ng-template>
+              </th>
+              <td> 
+                {{song.title}} <br> {{song.author}} 
+              </td>
+              <td>
+                {{song.album}}
+              </td> 
+              <td>
+                <button class="delete" id="delete">
+                  <img src="assets/images/iconos/delete.png" alt="Eliminar" width="100px">
+                </button>
+              </td>
+              <td>
+                <button class="modify" id="modify">
+                  <img src="assets/images/iconos/modify.png" alt="Modificar" width="100px">
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+</section>
