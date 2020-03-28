@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from "../../models/user";
+import { UserService } from "../../service/user.service";
+import { Router, RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-nav-dashboard',
@@ -6,11 +9,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nav-dashboard.component.css']
 })
 export class NavDashboardComponent implements OnInit {
-  name: string = "NombreUsuario";
+  public userName = null;
+  public user: User;
 
-  constructor() { }
+  constructor() { 
+    this.user = new User();
+  }
 
   ngOnInit(): void {
+    this.getUserName();
+  }
+
+  getUserName() {
+    this.user = JSON.parse(localStorage.getItem("user"));
+    this.userName = this.user.firstName + " " + this.user.lastName;
+    console.log("-> "+this.userName);
   }
 
 }
