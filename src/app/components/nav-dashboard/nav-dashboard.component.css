@@ -6,6 +6,9 @@
 		flex-wrap: wrap;
     align-items: center;
 }
+.dashboardNavAdmin{
+  background-color: #142A3F;
+}
 .dashboardNav .content{
     width: 100%;
     max-width: 1200px;

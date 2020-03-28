@@ -2,9 +2,19 @@
     <div class="nav">
         <app-nav-dashboard></app-nav-dashboard>
     </div>
-    <div class="musicList">
-        <app-music-list></app-music-list>
+
+    <div *ngIf="role==='ADMIN'; else usuario">
+        <div class="musicList">
+            <app-music-admin></app-music-admin>
+          </div>
     </div>
+    
+    <ng-template #usuario>
+        <div class="musicList">
+            <app-music-list></app-music-list>
+          </div>
+    </ng-template>
+
     <div class="musicControls">
         <app-music-controls></app-music-controls>
     </div>
