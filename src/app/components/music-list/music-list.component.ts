@@ -76,13 +76,6 @@ export class MusicListComponent implements OnInit {
       title: 'The Bloodthirster',
       author: 'Pentakill',
       album: 'Grasp of the Undying'
-    },
-    {
-      image: 'assets/images/disks/albumCover.jpg',
-      songUrl: 'assets/music/TheHexCore',
-      title: 'The Hex Core',
-      author: 'Pentakill',
-      album: 'Grasp of the Undying'
     }
   ];
 
