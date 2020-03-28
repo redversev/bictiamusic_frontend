@@ -4,18 +4,13 @@
             <img src="assets/images/logos/logo_2_blanco.png" alt="Bitcia Music">
         </div>
         <app-search></app-search> 
-        <!-- <div class="input-placeholder">
-          <input type="search" required />
-          <div class="placeholder">
-            Buscar canciones <img src="assets/images/iconos/busqueda.png" alt="Buscar canciones">
-          </div>
-        </div> -->
+
         <div class="navOptions">
-          <p class="nombre">Hola {{ name }}</p>
+          <p class="nombre">Usuario: {{ userName }}</p>
           <img src="assets/images/iconos/search.png" class="search" alt="buscar">
           <a href="#"><img src="assets/images/iconos/favorito.png" alt="Ver lista de canciones favoritas" /></a>
           <a href="#"><img src="assets/images/iconos/usuario.png" alt="Modificar usuario" /></a>
-          <a href="#"><img src="assets/images/iconos/candado.png" alt="Cerrar sesión" /></a>
+          <div class="btn" routerLink="/loginUser"><img src="assets/images/iconos/candado.png" alt="Cerrar sesión" /></div>
         </div>
     </div>
 </div>

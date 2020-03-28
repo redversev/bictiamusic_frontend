@@ -38,7 +38,6 @@ export class FormLoginUserComponent implements OnInit {
         case 200:
           alert("Bienvenido");
           localStorage.setItem("user", JSON.stringify(res.user));
-          localStorage.setItem("lastUser", this.lastUser);
           this.router.navigate(["dashboard"]);
           break;
         default:
