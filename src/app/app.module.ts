@@ -19,10 +19,11 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NavDashboardComponent } from './components/nav-dashboard/nav-dashboard.component';
 import { MusicControlsComponent } from './components/music-controls/music-controls.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
+import { SongService } from './service/song.service';
 
 const register: Routes = [
-  { path: "registerUser", component: FormRegisterUserComponent },
   { path: "", component: PrincipalComponent },
+  { path: "registerUser", component: FormRegisterUserComponent },
   { path: "loginUser", component: FormLoginUserComponent },
   { path: "dashboard", component:  DashboardComponent},
   { path: "admin", component: MusicAdminComponent }
@@ -47,7 +48,8 @@ const register: Routes = [
   ],
   imports: [BrowserModule, FormsModule, RouterModule.forRoot(register), HttpClientModule],
   providers: [
-    UserService
+    UserService,
+    SongService
   ],
   bootstrap: [AppComponent]
 })
