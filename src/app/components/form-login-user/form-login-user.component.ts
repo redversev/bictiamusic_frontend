@@ -36,7 +36,7 @@ export class FormLoginUserComponent implements OnInit {
           alert('Los datos no son correctos');
           break;
         case 200:
-          alert('Bienvenido');
+          alert('Bienvenido a Bictia Music');
           console.log(res.dataUser);
           localStorage.setItem('user', JSON.stringify(res.dataUser));
           this.router.navigate(['dashboard']);
