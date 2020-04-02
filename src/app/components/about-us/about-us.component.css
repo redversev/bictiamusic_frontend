@@ -1,0 +1,124 @@
+@import url("https://fonts.googleapis.com/css?family=Bellota+Text&display=swap");
+body {
+  margin: 0;
+  font-family: "Bellota Text", cursive;
+  font-size: 15pt;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+#mainPrincipal {
+  background-image: url(/assets/images/backgrounds/guitar.jpg);
+  background-position: center center;
+  background-size: cover;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 20px;
+}
+
+.viewSession {
+  right: 0;
+}
+.header {
+  width: 100%;
+  background-image: red;
+  padding: 40px 40px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.header .links {
+  display: flex;
+}
+.header .links .link {
+  position: relative;
+  color: #cadde5;
+  background-color: #1e4069;
+  border: 1px solid #1e4069;
+  border-radius: 5px;
+  padding: 5px 15px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+.header .links .link:hover {
+  color: #1e4069;
+  background-color: #cadde5;
+}
+.header .logo {
+  color: white;
+  font-size: 3em;
+}
+.copyright {
+  text-align: center;
+  color: white;
+  position: relative;
+  bottom: 0px;
+}
+.copyright a {
+  text-decoration: none;
+  color: white;
+}
+
+.aboutUsContent{
+    margin: auto;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+}
+.aboutUs{
+    margin: auto;
+    width: 90%;
+    max-width: 1200px;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 20px;
+    border-radius: 20px;
+    box-sizing: border-box;
+}
+.aboutUs .person{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 10px 0 30px;
+    border-bottom: 1px solid grey;
+}
+.aboutUs .person .image{
+    border-radius: 10px;
+    max-width: 150px;
+    width: 100%;
+    height: 150px;
+    background-color: rgba(255, 255, 255, 0.2);
+    margin: 0 20px 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.aboutUs .person .nombre{
+    font-weight: bold;
+    padding: 5px 0;
+}
+.aboutUs .person .rol{
+    font-size: .8em;
+}
+.aboutUs .person .descripcion{
+    font-size: .9em;
+    padding: 5px 0 ;
+}
+
+@media only screen and (max-width: 1200px) {
+  .header {
+    flex-direction: column;
+    align-items: center;
+    padding-top: 100px;
+  }
+  .header .links {
+    padding: 100px 0 0 0;
+  }
+  .copyright {
+    font-size: 0.8em;
+  }
+}
