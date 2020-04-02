@@ -20,7 +20,7 @@ export class NavDashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getUserName();
+    //this.getUserName();
   }
 
   getUserName() {

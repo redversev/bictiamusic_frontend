@@ -13,18 +13,17 @@ export class DashboardComponent implements OnInit {
   public user: User;
   public role = null;
 
-
-  constructor() { 
+  constructor( service: UserService ) { 
     this.user = new User();
   }
 
   ngOnInit(): void {
-    this.getRol();
+    //this.getRol();
   }
 
-  getRol() {
+  /*getRol() {
     this.user = JSON.parse(localStorage.getItem("user"));
     this.role = this.user.role;
-  }
+  }*/
 
 }
