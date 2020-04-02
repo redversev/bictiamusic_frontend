@@ -1,8 +1,52 @@
 .controls{
     width: 100%;
     background-color: #A9B6C4;
-    height: 120px;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.info1 {
+    display: flex;
+    align-items: center;
+}
+
+.info1 img {
+    width: 40px;
+    height: auto;
+}
+
+.info1 #time {
+    margin-left: 5px;
+    font-size: 32px;
+}
+
+.btnControl img {
+    width: 80px;
+    height: auto;
+}
+
+.info2 .secondary{
+    font-size: 13px;
+}
+
+/* MEDIA QUERIES */
+
+@media only screen and (max-width: 1200px) {
+    .info1 img {
+        width: 25px;
+        height: auto;
+    }
+    .info1 #time {
+        font-size: 22px;
+    }
+    .btnControl img {
+        width: 54px;
+    }
+    .info2 .primary{
+        font-size: 13px;
+    }
+    .info2 .secondary{
+        font-size: 11px;
+    }
 }
