@@ -15,30 +15,28 @@ export class SongService {
     getSongs(songParams) {
         return this.http.get(`${this.apiURL} + /music/`).pipe(res => res);
     }
-    createSong(songParams) {
-        const params = JSON.stringify(songParams);
-        const options = {
-            headers: new HttpHeaders(
-                { 'Content-Type': 'application/json'}
-            )
-        };
+    createSong(body, imageFile, audioFile) {
+        const text = JSON.stringify(body);
+        const file = new FormData();
+        file.append('body', text);
+        file.append('audio', audioFile);
+        file.append('image', imageFile);
         return this.http.post(`${this.apiURL}/music/create`,
-            params,
-            options
+            file
         ).pipe(res => res);
     }
-    uploadAudio(audio,id) {
-        const audioFile = new FormData();
-        audioFile.append('image', audio);
-        return this.http.put(`${this.apiURL}/music/create/upload/audio/${id}`,
-            audioFile
-        ).pipe(res => res);
-    }
-    uploadImage(image,id) {
-        const imageFile = new FormData();
-        imageFile.append('image', image);
-        return this.http.put(`${this.apiURL}/music/create/upload/image/${id}`,
-            imageFile
-        ).pipe(res => res);
-    }
+    // uploadAudio(audio,id) {
+    //     const audioFile = new FormData();
+    //     audioFile.append('image', audio);
+    //     return this.http.put(`${this.apiURL}/music/create/upload/audio/${id}`,
+    //         audioFile
+    //     ).pipe(res => res);
+    // }
+    // uploadImage(image,id) {
+    //     const imageFile = new FormData();
+    //     imageFile.append('image', image);
+    //     return this.http.put(`${this.apiURL}/music/create/upload/image/${id}`,
+    //         imageFile
+    //     ).pipe(res => res);
+    // }
 }

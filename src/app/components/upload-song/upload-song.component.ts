@@ -20,36 +20,15 @@ export class UploadSongComponent implements OnInit {
     }
 
     createSong() {
-        this.service.createSong(this.song).subscribe((res: any) => {
-            if (res.statusCode === 200) {
-                alert('canción creada correctamente');
-                console.log(res);
-                if (this.urlImage !== undefined) {
-                    this.service.uploadImage(this.urlImage, res.created._id)
-                        .subscribe((res: any) => {
-                            if (res.statusCode === 200) {
-                                alert('Imagen  de la canción actualizada');
-                                console.log(res);
-                            } else {
-                                alert('Error al agregar imagen de la canción');
-                            }
-                        });
+        this.service.createSong(this.song, this.urlImage, this.audio)
+            .subscribe((res: any) => {
+                if (res.statusCode === 200) {
+                    alert('canción creada correctamente');
+                    console.log(res);
+                } else {
+                    alert(`Algo malo ha ocurrido ${res.statusCode} , ${res.message}`);
                 }
-                if (this.audio !== undefined) {
-                    this.service.uploadAudio(this.audio,res.created._id)
-                        .subscribe((res: any) => {
-                            if (res.statusCode === 200) {
-                                alert('Audio de la canción actualizada');
-                                console.log(res);
-                            } else {
-                                alert('Error al agregar imagen de la canción');
-                            }
-                        });
-                }
-            } else {
-                alert(`Algo malo ha ocurrido ${res.statusCode}`)
-            }
-        });
+            });
     }
     loadImg(image: any) {
         this.urlImage = image.target.files[0] as File;
