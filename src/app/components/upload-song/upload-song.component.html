@@ -1,0 +1,42 @@
+<form #signUpForm="ngForm" (ngSubmit)="createSong();">
+    <div class="form-group">
+        <label for="name">Nombre</label>
+        <input #name="ngModel" [(ngModel)]="song.name" name="songName" type="text" class="form-control" id="fristName"
+            placeholder="Nombre de la canción">
+    </div>
+    <div class="form-group">
+        <label for="songGenre">Género</label>
+        <input #genre="ngModel" [(ngModel)]="song.genre" name="songGenre" type="text" class="form-control"
+            id="songGenre" placeholder="Género">
+    </div>
+    <div class="form-group">
+        <label for="artista">Artista</label>
+        <input name='artista' #artista="ngModel" [(ngModel)]="song.artist" type="text" class="form-control" id="artista"
+            aria-describedby="artista" placeholder="Artista">
+    </div>
+    <div class="form-group">
+        <label for="image">Carge una imagen de la canción</label>
+        <input type="file" id="image" name="image" accept="image/*" (change)=" loadImg($event)" />
+        <br>
+    </div>
+
+    <div class="form-group">
+        <label for="disco">Nombdre del disco</label>
+        <input name='disco' #disco="ngModel" [(ngModel)]="song.discName" type="text" class="form-control" id="disco">
+    </div>
+    <div class="form-group">
+        <label for="composer">Compositor</label>
+        <input name='composer' #composer="ngModel" [(ngModel)]="song.composer" type="text" class="form-control"
+            id="composer">
+    </div>
+    <div class="form-group">
+        <label for="createAt">Fecha de creación</label>
+        <input name='createAt' #createAt="ngModel" [(ngModel)]="song.createAt" type="text" class="form-control"
+            id="createAt">
+    </div>
+    <div class="form-group">
+        <label for="audio">Carge la canción aquí</label>
+        <input type="file" id="audio" name="audio" accept=".mp3,.mp4" (change)=" loadSong($event)" />
+    </div>
+    <button type="submit" class="btn btn-primary">Registrar</button>
+</form>

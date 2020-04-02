@@ -1,15 +1,15 @@
-import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
-import { FormsModule } from "@angular/forms";
-import { Routes, RouterModule } from "@angular/router";
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { Routes, RouterModule } from '@angular/router';
 import { UserService } from './service/user.service'; //nueva para la conexion con
 import { HttpClientModule } from '@angular/common/http'; //las llamadas http
 
-import { AppComponent } from "./app.component";
-import { PrincipalComponent } from "./components/principal/principal.component";
-import { NavLoginComponent } from "./components/nav-login/nav-login.component";
-import { FormLoginUserComponent } from "./components/form-login-user/form-login-user.component";
-import { FormRegisterUserComponent } from "./components/form-register-user/form-register-user.component";
+import { AppComponent } from './app.component';
+import { PrincipalComponent } from './components/principal/principal.component';
+import { NavLoginComponent } from './components/nav-login/nav-login.component';
+import { FormLoginUserComponent } from './components/form-login-user/form-login-user.component';
+import { FormRegisterUserComponent } from './components/form-register-user/form-register-user.component';
 import { MusicListComponent } from './components/music-list/music-list.component';
 import { MusicAdminComponent } from './components/music-admin/music-admin.component';
 import { FormModifyUserComponent } from './components/form-modify-user/form-modify-user.component';
@@ -20,13 +20,16 @@ import { NavDashboardComponent } from './components/nav-dashboard/nav-dashboard.
 import { MusicControlsComponent } from './components/music-controls/music-controls.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { SongService } from './service/song.service';
+import { UploadSongComponent } from './components/upload-song/upload-song.component';
 
 const register: Routes = [
-  { path: "", component: PrincipalComponent },
-  { path: "registerUser", component: FormRegisterUserComponent },
-  { path: "loginUser", component: FormLoginUserComponent },
-  { path: "dashboard", component:  DashboardComponent},
-  { path: "admin", component: MusicAdminComponent }
+    { path: '', component: PrincipalComponent },
+    { path: 'registerUser', component: FormRegisterUserComponent },
+    { path: 'loginUser', component: FormLoginUserComponent },
+    { path: 'dashboard', component:  DashboardComponent},
+    { path: 'admin', component: MusicAdminComponent },
+    { path: 'uploadSong', component: UploadSongComponent }
+  
 ];
 
 @NgModule({
@@ -44,7 +47,8 @@ const register: Routes = [
     DashboardComponent,
     NavDashboardComponent,
     MusicControlsComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    UploadSongComponent
   ],
   imports: [BrowserModule, FormsModule, RouterModule.forRoot(register), HttpClientModule],
   providers: [
