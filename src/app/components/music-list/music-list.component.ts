@@ -12,17 +12,16 @@ export class MusicListComponent implements OnInit {
   public songs: Song;
 
   constructor(private service: SongService) {
+    console.log(this.songs);
     this.songs = new Song();
   }
 
   ngOnInit(): void {
-    console.log(this.songs);
     this.getSongs();
   }
 
   getSongs(){
     this.service.getSongs().subscribe( (res: any) => {
-      console.log(res);
       switch (res.statusCode) {
         case 400:
           alert('No hay canciones registradas');
@@ -38,7 +37,7 @@ export class MusicListComponent implements OnInit {
     });
   }
 
-  changeSong(urlSong) {
+  changeSong(song) {
     const video: HTMLMediaElement = document.getElementById('bictiaMusic') as HTMLMediaElement;
     video.setAttribute('src', urlSong + '.mp3');
     video.play();

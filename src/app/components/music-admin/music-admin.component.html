@@ -2,12 +2,12 @@
     <div class="list">
         <table class="table table-dark">
           <tbody> 
-            <tr *ngFor=" let song of songs" class="song">
+            <tr *ngFor=" let song of songs" class="song" (click)="changeSong(song.audio)">
               <th scope="row"> 
                 
-                <ng-container *ngIf="song.image; else noImage">
+                <ng-container *ngIf="song.urlImage; else noImage">
                   <button>
-                    <img src="{{ song.image }}" alt="{{ song.title }}">
+                    <img src="{{ song.urlImage }}" alt="{{ song.title }}">
                   </button>
                 </ng-container>
                 

@@ -19,12 +19,12 @@ export class SongService {
 
   /**
    * Función que trae canción por nombre
-   * @param songParams 
+   * @param songParams
    */
-  getSongsbyName(songParams){
-    const params = JSON.stringify(songParams);
+  getSongsbyName(nameSong){
+    const params = JSON.stringify(nameSong);
     const options = { headers: new HttpHeaders({ 'Content-Type': 'application/json' })};
-    return this.http.get(this.apiURL + '/music/name', params, options);
+    return this.http.get(`${this.apiURL}/music/name`, options);
   }
 
 }

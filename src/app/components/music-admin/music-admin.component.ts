@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Song } from '../../models/song';
+import { SongService } from '../../service/song.service';
 
 @Component({
   selector: 'app-music-admin',
@@ -7,59 +9,37 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MusicAdminComponent implements OnInit {
 
-  songs = [
-    {
-      image: 'assets/images/disks/albumCover.jpg',
-      songUrl: 'assets/music/BladeOfTheRuinedKing',
-      title: 'Blade of the Ruined King',
-      author: 'Pentakill',
-      album: 'Grasp of the Undying'
-    },
-    {
-      image: 'assets/images/disks/albumCover.jpg',
-      songUrl: 'assets/music/Cull',
-      title: 'Cull',
-      author: 'Pentakill',
-      album: 'Grasp of the Undying'
-    },
-    {
-      image: 'assets/images/disks/albumCover.jpg',
-      songUrl: 'assets/music/DeadMansPlate',
-      title: 'Dead Mans Plate',
-      author: 'Pentakill',
-      album: 'Grasp of the Undying'
-    },
-    {
-      image: 'assets/images/disks/albumCover.jpg',
-      songUrl: 'assets/music/FrozenHeart',
-      title: 'Frozen Heart',
-      author: 'Pentakill',
-      album: 'Grasp of the Undying'
-    },
-    {
-      songUrl: 'assets/music/InfinityEdge',
-      title: 'Infinity Edge',
-      author: 'Pentakill',
-      album: 'Grasp of the Undying'
-    },
-    {
-      image: 'assets/images/disks/albumCover.jpg',
-      songUrl: 'assets/music/MortalReminder',
-      title: 'Mortal Reminder',
-      author: 'Pentakill',
-      album: 'Grasp of the Undying'
-    }
-  ]
+  public songs: Song;
+
+  constructor( private service: SongService ) {
+    this.songs = new Song();
+  }
+
+  ngOnInit(): void {
+    this.getSongs();
+  }
+
+  getSongs(){
+    this.service.getSongs().subscribe( (res: any) => {
+      switch (res.statusCode) {
+        case 400:
+          alert('No hay canciones registradas');
+          break;
+        case 200:
+          alert('Listado de canciones');
+          this.songs = res.music;
+          break;
+        default:
+          alert('Error de conexión');
+          break;
+      }
+    });
+  }
 
   changeSong(urlSong) {
     const video: HTMLMediaElement = document.getElementById('bictiaMusic') as HTMLMediaElement;
     video.setAttribute('src', urlSong + '.mp3');
     video.play();
-  }
-
-  constructor() { }
-
-  ngOnInit(): void {
   }
 
 }

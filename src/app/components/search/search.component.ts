@@ -12,7 +12,7 @@ export class SearchComponent implements OnInit {
   public song: Song;
 
   constructor( private service: SongService ) { 
-
+    this.song = new Song();
   }
 
   ngOnInit(): void {
