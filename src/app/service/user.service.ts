@@ -35,4 +35,16 @@ export class UserService {
       .post(this.apiURL + "/user/login", params, options)
       .pipe(res => res);
   }
+  updateUser(userParams) {
+    const params = JSON.stringify(userParams);
+    const options = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+    return this.http.put(
+      `${this.apiURL}/user/update/${userParams._id}`,
+      params,
+      options
+    ).pipe( res => res );
+  }
+
+
+
 }

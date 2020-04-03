@@ -1,0 +1,96 @@
+.contentButtons {
+    width: 100%;
+    margin: 25px 0 0 0;
+    display: flex;
+    justify-content: space-around;
+  }
+  .button{
+    color: #cadde5;
+    background-color: #1e4069;
+    border: 1px solid #1e4069;
+    border-radius: 10px;
+    padding: 5px 15px;
+    margin: 0 5px;
+    cursor: pointer;
+    outline: none;
+    font-size: 1em;
+    text-decoration: none;
+  }
+  .button:hover {
+    color: #1e4069;
+    border: 1px solid #1e4069;
+    border-radius: 10px;
+    padding: 5px 15px;
+    margin: 0 5px;
+    cursor: pointer;
+    background: rgb(202, 221, 229,0.7);
+    outline: none;
+  }
+  .registro {
+    position: absolute;
+    right: 1px;
+    top: 0;
+    width: 100%;
+    max-width: 500px;
+    height: 100vh;
+    background-color: rgba(255,255,255,0.5);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s all ease;
+  }
+  .viewRegistro {
+    right: 0;
+  }
+  .titleRegistro {
+    font-size: 1em;
+    width: 100%;
+    font-family: "Bellota Text", cursive;
+    color: #1e4069;
+    text-align: right;
+  }
+  .contentRegistro {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+  }
+  .aceptarTerminos {
+    font-size: .8em;
+    width: 100%;
+    font-family: "Bellota Text", cursive;
+    color: #1e4069;
+    text-align: end;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    box-sizing: border-box;
+  }
+  .form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .input {
+    font-size: 1em;
+    color: #212121;
+    margin: 6px 0 6px 0;
+    border-radius: 20px;
+    border: 1px;
+    padding: 10px 15px;
+    background: white;
+    outline: none;
+    text-decoration: none;
+    width: 100%;
+  }
+  .mensajes{
+    border-radius: 5px;
+    border: 1px solid red;
+    padding: 5px 10px;
+    margin: 5px;
+    background-color: rgba(255,0,0,0.05);
+    color: red;
+    text-align: center;
+    transition: .5s all ease;
+  }

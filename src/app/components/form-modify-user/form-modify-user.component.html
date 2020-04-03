@@ -1,1 +1,58 @@
-<p>form-modify-user works!</p>
+<section class="dashboard">
+    <div class="nav">
+        <app-nav-dashboard></app-nav-dashboard>
+    </div>
+
+    <div class="registro" id="registro">
+        <div class="contentRegistro">
+            <div class="titleRegistro">
+                <h1 *ngIf="!isError">Modificar datos de Usuario</h1>
+            </div>
+            <div class="mensajes" id="message" *ngIf="isError"> {{messageError}} </div>
+
+            <form #updateUserForm="ngForm" (ngSubmit)="updateUser();">
+                <!--usuario-->
+                {{this.nombre}}
+
+                <!--nombres-->
+                <input class="input" type="text" name="firstName" id="firstName" placeholder="Ingrese su nombre:"
+                    required max="20" #firstName="ngModel" [(ngModel)]="user.firstName" />
+
+                <!--apellido-->
+                <input class="input" type="text" name="lastName" id="lastName" placeholder="Ingrese su apellido:"
+                    required max="20" #lastName="ngModel" [(ngModel)]="user.lastName" />
+
+                <!--teléfono-->
+                <input class="input" type="text" name="phone" id="phone" placeholder="Ingrese su número de teléfono:"
+                    required max="10" #phone="ngModel" [(ngModel)]="user.phone" />
+
+                <!--password-->
+                <input class="input" type="password" name="password" id="password"
+                    placeholder="Establezca una contraseña:" required max="20" #password="ngModel"
+                    [(ngModel)]="user.password" />
+
+                <!--Confirmar-password-->
+                <input class="input" type="password" name="passwordConfirm" id="passwordConfirm"
+                    placeholder="Confirme su contraseña:" required max="20" #passwordConfirm="ngModel"
+                    [(ngModel)]="user.passwordConfirm" />
+
+
+                <div class="contentButtons">
+                    <a routerLink="/dashboard" class="button"> Cancelar </a>
+                    <button class="button" id="buttonUpdate">
+                        Modificar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="musicList">
+        <app-music-list></app-music-list>
+    </div>
+    <div class="musicControls">
+        <app-music-controls></app-music-controls>
+    </div>
+
+
+</section>
