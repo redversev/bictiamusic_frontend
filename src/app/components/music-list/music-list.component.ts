@@ -28,7 +28,7 @@ export class MusicListComponent implements OnInit {
           alert('No hay canciones registradas');
           break;
         case 200:
-          alert('Listado de canciones');
+          console.log('Listado de canciones');
           this.songs = res.music;
           break;
         default:
@@ -38,19 +38,13 @@ export class MusicListComponent implements OnInit {
     });
   }
 
-
-  constructor(private service: SongService) { }
-
-  ngOnInit(): void {
-  }
-
   changeSong(song) {
     const audio: HTMLMediaElement = document.getElementById('bictiaMusic') as HTMLMediaElement;
     audio.setAttribute('src', song.songUrl + '.mp3');
     this.service.playSong(audio);
     document.querySelector('.songName').textContent = song.title;
-    document.querySelector('.author').textContent = song.author
-    document.querySelector('.album').textContent = song.album
+    document.querySelector('.author').textContent = song.author;
+    document.querySelector('.album').textContent = song.album;
 
   }
 
