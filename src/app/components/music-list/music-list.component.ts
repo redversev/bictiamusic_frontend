@@ -38,10 +38,20 @@ export class MusicListComponent implements OnInit {
     });
   }
 
-  changeSong(urlSong) {
-    const video: HTMLMediaElement = document.getElementById('bictiaMusic') as HTMLMediaElement;
-    video.setAttribute('src', urlSong + '.mp3');
-    video.play();
+
+  constructor(private service: SongService) { }
+
+  ngOnInit(): void {
+  }
+
+  changeSong(song) {
+    const audio: HTMLMediaElement = document.getElementById('bictiaMusic') as HTMLMediaElement;
+    audio.setAttribute('src', song.songUrl + '.mp3');
+    this.service.playSong(audio);
+    document.querySelector('.songName').textContent = song.title;
+    document.querySelector('.author').textContent = song.author
+    document.querySelector('.album').textContent = song.album
+
   }
 
 }
