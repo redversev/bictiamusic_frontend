@@ -1,6 +1,6 @@
 <section class="musicList">
   <div class="list">
-    <div *ngFor="let song of songs" class="song" (click)="changeSong(song.songUrl)">
+    <div *ngFor="let song of songs" class="song" (click)="changeSong(song)">
 
       <ng-container *ngIf="song.image; else noImage">
           <button>
