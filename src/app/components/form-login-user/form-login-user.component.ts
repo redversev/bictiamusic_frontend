@@ -22,27 +22,27 @@ export class FormLoginUserComponent implements OnInit {
   }
 
   getLastUser() {
-    this.lastUser = localStorage.getItem("lastUser");
-    console.log("El último usuario registrado: " + this.lastUser);
+    this.lastUser = localStorage.getItem('lastUser');
+    console.log('El último usuario registrado: ' + this.lastUser);
   }
 
   login() {
     this.service.login(this.user).subscribe((res: any) => {
       switch (res.statusCode) {
         case 400:
-          alert("El usuario no esta registrado");
+          alert('El usuario no esta registrado');
           break;
         case 401:
-          alert("Los datos no son correctos");
+          alert('Los datos no son correctos');
           break;
         case 200:
-          alert("Bienvenido");
-          console.log(res.dataUser)
-          localStorage.setItem("user", JSON.stringify(res.dataUser));
-          this.router.navigate(["dashboard"]);
+          alert('Bienvenido a Bictia Music');
+          console.log(res.dataUser);
+          localStorage.setItem('user', JSON.stringify(res.dataUser));
+          this.router.navigate(['dashboard']);
           break;
         default:
-          alert("Error de conexion");
+          alert('Error de conexion');
       }
     });
   }

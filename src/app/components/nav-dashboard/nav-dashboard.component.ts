@@ -24,16 +24,15 @@ export class NavDashboardComponent implements OnInit {
   }
 
   getUserName() {
-    this.user = JSON.parse(localStorage.getItem("user"));
+    this.user = JSON.parse(localStorage.getItem('user'));
     this.userName = this.user.firstName + " " + this.user.lastName;
     this.role = this.user.role;
-    if(this.role!="USER"){
-      this.class="dashboardNavAdmin";
+    if(this.role === 'ADMIN'){
+      this.class = 'dashboardNavAdmin';
     }
   }
   abrirBuscador(){
     alert("hi");
-    
   }
 
 }

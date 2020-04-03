@@ -1,3 +1,18 @@
 <section class="controls">
-    <audio id="bictiaMusic" src="assets/music/MortalReminder.mp3" controls></audio>
+    <audio src="./assets/songs/Cull.mp3" id="bictiaMusic"></audio>
+    <div class="info1">
+        <img src="assets/images/iconos/botonAgregar.png" alt="" />
+        <p id="time">00:00</p>
+    </div>
+    <div class="btnControl">
+        <img src="./assets/images/iconos/pause.png" (click)="playSong()" id="playImage" alt="">
+    </div>
+    <div class="info2">
+        <p class="songName">Nombre de la cancion</p>
+        <div class="details">
+        	<p class="author">Nombre del artista</p>
+        	<p class="decorator">-</p>
+        	<p class="album">Nombrel del disco</p>
+        </div>
+    </div>
 </section>
