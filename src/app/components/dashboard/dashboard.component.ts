@@ -13,7 +13,8 @@ export class DashboardComponent implements OnInit {
   public user: User;
   public role = null;
 
-  constructor( service: UserService ) { 
+
+  constructor() { 
     this.user = new User();
   }
 

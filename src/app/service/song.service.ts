@@ -18,13 +18,18 @@ export class SongService {
   }
 
   /**
-   * Función que trae canción por nombre
-   * @param songParams 
+   * Esta funcion permite reproducir o pausar una cancion y cambia la imagen
+   * @param song Como parametro recibe un elemento HTMLMediaElement
+   * @constant image La imagen que va a mostrar el icono de play/pause
    */
-  getSongsbyName(songParams){
-    const params = JSON.stringify(songParams);
-    const options = { headers: new HttpHeaders({ 'Content-Type': 'application/json' })};
-    return this.http.get(this.apiURL + '/music/name', params, options);
+  playSong(song){
+    const image = document.querySelector('#playImage');
+    if (song.paused) {
+      song.play();
+      image.setAttribute('src', './assets/images/iconos/pause.png');
+    } else {
+      song.pause();
+      image.setAttribute('src', './assets/images/iconos/play.png');
+    }
   }
-
 }
