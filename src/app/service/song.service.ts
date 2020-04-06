@@ -32,4 +32,19 @@ export class SongService {
       image.setAttribute('src', './assets/images/iconos/play.png');
     }
   }
+
+  /**
+   * Funcion para añadir canciones a favoritos
+   * @param idSong Id de la cancion que se va a añadir como favorita
+   * @param userId Id del usuario que la va a añadir
+   */
+  addFavSong(idSong, userId) {
+    const params = JSON.stringify({songId: idSong});
+    const options = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+    return this.http.put(
+      `${this.apiURL}/user/${userId}`,
+      params,
+      options
+    ).pipe(res => res);
+  }
 }

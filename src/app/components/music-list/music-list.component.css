@@ -87,20 +87,23 @@
   left: 0;
 }
 .musicList .list .song .botonFav .botonFavOff{
-  opacity: 1;
-  transition: .5s all ease;
+  display: block
+  /* opacity: 1;
+  transition: .5s all ease; */
 }
 .musicList .list .song .botonFav .botonFavOn{
-  opacity: 0;
-  transition: .5s all ease;
+  display: none;
+  /* opacity: 0;
+  transition: .5s all ease; */
 }
+/*
 .musicList .list .song:hover .botonFav .botonFavOn{
   opacity: 1;
 }
 .musicList .list .song:hover .botonFav .botonFavOff{
   opacity: 0;
 }
-
+*/
 
 
 
