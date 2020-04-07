@@ -28,7 +28,7 @@
 
 @media only screen and (max-width: 1200px) {
     .search input{
-        min-width: initial;
+     min-width: initial;
     }
     
 }

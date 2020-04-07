@@ -11,7 +11,6 @@ export class SongService {
 
   /**
    * Función que trae las canciones
-   * @param songParams  Datos de la canción
    */
   getSongs(){
     return this.http.get(this.apiURL + '/music/').pipe( res => res );
@@ -31,5 +30,18 @@ export class SongService {
       song.pause();
       image.setAttribute('src', './assets/images/iconos/play.png');
     }
+  }
+
+  /**
+   * Función que trae la canción por nombre
+   * @param songParams Datos de la canción
+   */
+  getSongByName(songParams){
+    const params = songParams;
+    console.log(params.name);
+    //const options = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+    return this.http.get(
+      this.apiURL + '/music/typehead?name=' + params.name
+    ).pipe( res => res );
   }
 }

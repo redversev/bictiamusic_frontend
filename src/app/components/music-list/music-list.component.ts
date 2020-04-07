@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Song } from '../../models/song';
 import { SongService } from '../../service/song.service';
 
@@ -12,16 +12,16 @@ export class MusicListComponent implements OnInit {
   public songs: Song[];
 
   constructor(private service: SongService) {
+   this.songs = new Song();
   }
 
   ngOnInit(): void {
-    console.log(this.songs);
     this.getSongs();
+    this.getSongByName();
   }
 
   getSongs(){
     this.service.getSongs().subscribe( (res: any) => {
-      console.log(res);
       switch (res.statusCode) {
         case 400:
           alert('No hay canciones registradas');
@@ -37,16 +37,33 @@ export class MusicListComponent implements OnInit {
     });
   }
 
-  changeSong(song) {
-    console.log(song);
-    // const audio: HTMLMediaElement = document.getElementById('bictiaMusic') as HTMLMediaElement;
-    // audio.setAttribute('src', song.songUrl + '.mp3');
-    // this.service.playSong(audio);
-    // document.querySelector('.songName').textContent = song.title;
-    // document.querySelector('.author').textContent = song.author;
-    // document.querySelector('.album').textContent = song.album;
-    console.log(song.audio);
-
+  getSongByName(){
+    let song = JSON.parse(localStorage.getItem('dataSong'));
+    if (song !== null) {
+      this.songs = song;
+      console.log(this.songs);
+    }else{
+      alert('Oppps...!!!! Canción no encontrada')
+    }
   }
 
+  changeSong(song) {
+    const audio: HTMLMediaElement = document.getElementById('bictiaMusic') as HTMLMediaElement;
+    audio.setAttribute('src', song.audio + '.mp3');
+    this.service.playSong(audio);
+    document.querySelector('.songName').textContent = song.name;
+    document.querySelector('.author').textContent = song.artist;
+    document.querySelector('.album').textContent = song.discName;
+  }
+
+  addFav(song) {
+    const user = JSON.parse(localStorage.getItem('user'));
+    this.service.addFavSong(song._id, user._id).subscribe((res: any) => {
+      console.log(res);
+    });
+  }
+
+  delFav() {
+    console.log("Eliminar de favoritos");
+  }
 }

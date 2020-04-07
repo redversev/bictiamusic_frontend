@@ -1,7 +1,5 @@
 <section class="musicList">
   <div class="list">
-
-    <!--<div *ngFor="let song of songs" class="song" (click)="changeSong(song.songUrl)">-->
     <div *ngFor="let song of songs" class="song" (click)="changeSong(song)">
       <ng-container *ngIf="song.urlImage; else noImage">
           <button>
@@ -14,17 +12,17 @@
             <img src="assets/images/disks/disk2.jpg" alt="{{ song.name }}">
         </button>
         </ng-template>
-
+        
       <div class="details">
         <div>
           {{ song.name }} <br> {{ song.artist }}
         </div>
         <div class="botonFav">
           <div class="botonFavOff">
-            <img src="/assets/images/iconos/botonAgregar.png" alt="Me gusta esta canción">            
+            <img src="/assets/images/iconos/botonAgregar.png" (click)="addFav(song)" alt="No me gusta esta canción">            
           </div>
           <div class="botonFavOn">
-            <img src="/assets/images/iconos/botonFavorito.png" alt="Me gusta esta canción">            
+            <img src="/assets/images/iconos/botonFavorito.png" (click)="delFav()" alt="Me gusta esta canción">            
           </div>
         </div>
       </div>
