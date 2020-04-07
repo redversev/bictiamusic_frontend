@@ -1,0 +1,116 @@
+.musicList{
+    height: calc(100vh - 160px);
+    background-image: url(/assets/images/backgrounds/backgroundConcert.png);
+    background-size: cover;
+    color: white;
+    overflow: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+.musicList .list{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin: auto;
+    max-width: 1200px;
+}
+
+.musicList .list button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.musicList .list .song{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 200px;
+    opacity: 0.5;
+    margin: 6px;
+    padding: 3px;
+    color: white;
+    font-size: 1em;
+    transition: .5s all ease;
+    background-image: url(/assets/images/disks/disk1.jpg);
+    background-position: center center;
+    background-size: cover;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+}
+
+.musicList .list .song img {
+  border-radius: 4px;
+  max-width: 100%;
+  height: auto;
+}
+
+.musicList .list .song:hover{
+  opacity: 1;
+}
+
+.musicList .list .song .details{
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: .5s all ease;
+
+}
+.musicList .list .song:hover .details{
+  background-color: rgba(255, 255, 255, 0.3);
+}
+.musicList .list .song .botonFav{
+  position: relative;
+}
+.musicList .list .song .botonFav img{
+  max-width: 30px;
+}
+.musicList .list .song .botonFav .botonFavOn{
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.musicList .list .song .botonFav .botonFavOff{
+  display: block
+  /* opacity: 1;
+  transition: .5s all ease; */
+}
+.musicList .list .song .botonFav .botonFavOn{
+  display: none;
+  /* opacity: 0;
+  transition: .5s all ease; */
+}
+/*
+.musicList .list .song:hover .botonFav .botonFavOn{
+  opacity: 1;
+}
+.musicList .list .song:hover .botonFav .botonFavOff{
+  opacity: 0;
+}
+*/
+
+
+
+@media only screen and (max-width: 1200px) {
+
+    .musicList .list .song{
+        width: 150px;
+        height: 150px;
+    }
+}
