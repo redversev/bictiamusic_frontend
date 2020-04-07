@@ -11,7 +11,6 @@ export class SongService {
 
   /**
    * Función que trae las canciones
-   * @param songParams  Datos de la canción
    */
   getSongs(){
     return this.http.get(this.apiURL + '/music/').pipe( res => res );
@@ -34,18 +33,16 @@ export class SongService {
   }
 
   /**
-   * Funcion para añadir canciones a favoritos
-   * @param idSong Id de la cancion que se va a añadir como favorita
-   * @param userId Id del usuario que la va a añadir
+   * Función que trae la canción por nombre
+   * @param songParams Datos de la canción
    */
-  addFavSong(idSong, userId) {
-    const params = JSON.stringify({songId: idSong});
-    const options = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
-    return this.http.put(
-      `${this.apiURL}/user/${userId}`,
-      params,
-      options
-    ).pipe(res => res);
+  getSongByName(songParams){
+    const params = songParams;
+    console.log(params.name);
+    //const options = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+    return this.http.get(
+      this.apiURL + '/music/typehead?name=' + params.name
+    ).pipe( res => res );
   }
 
   getFavoriteSongs(userId){
