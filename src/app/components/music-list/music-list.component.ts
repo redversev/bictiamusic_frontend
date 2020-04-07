@@ -9,10 +9,9 @@ import { SongService } from '../../service/song.service';
 })
 export class MusicListComponent implements OnInit {
 
-  public songs: Song;
+  public songs: Song[];
 
   constructor(private service: SongService) {
-    this.songs = new Song();
   }
 
   ngOnInit(): void {

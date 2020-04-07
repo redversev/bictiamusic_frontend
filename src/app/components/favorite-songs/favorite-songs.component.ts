@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Song } from '../../models/song';
+import { User } from '../../models/user';
 import { SongService } from '../../service/song.service';
 
 @Component({
@@ -10,11 +11,36 @@ import { SongService } from '../../service/song.service';
 export class FavoriteSongsComponent implements OnInit {
 
   public songs: Song[];
+  public user: User;
 
-  constructor(private service: SongService) { }
+  constructor(private service: SongService) {
+  	this.user = new User();
+  }
 
   ngOnInit(): void {
-    const user = JSON.parse(localStorage.getItem('user'));
+  	this.getFavSongs() 
+  }
+  
+  test = [
+  	{
+  		name: "Blade of the Ruined King",
+  		artist: "Pentakill",
+  		dicName: "Grasp of the Undying"
+  	},
+  	{
+  		name: "Cull",
+  		artist: "Pentakill",
+  		dicName: "Grasp of the Undying"
+  	},
+  	{
+  		name: "Tear of the Goddess",
+  		artist: "Pentakill",
+  		dicName: "Grasp of the Undying"
+  	}
+  ];
+  
+  getFavSongs() {
+  	const user = JSON.parse(localStorage.getItem('user'));
     this.service.getFavoriteSongs(user._id).subscribe((res: any) => {
       switch (res.statusCode) {
         case 400:
@@ -22,13 +48,12 @@ export class FavoriteSongsComponent implements OnInit {
           break;
         case 200:
           console.log('Listado de canciones');
-          this.songs = res.user.favoriteSongs;
+          this.user.favoriteSongs = res.user.favoriteSongs;
           break;
         default:
           alert('Error de conexión');
           break;
       }
-    console.log(this.songs);
     });
   }
 
