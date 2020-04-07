@@ -3,39 +3,32 @@ import { Song } from '../../models/song';
 import { SongService } from '../../service/song.service';
 
 @Component({
-  selector: 'app-music-list',
-  templateUrl: './music-list.component.html',
-  styleUrls: ['./music-list.component.css']
+  selector: 'app-favorite-songs',
+  templateUrl: './favorite-songs.component.html',
+  styleUrls: ['./favorite-songs.component.css']
 })
-export class MusicListComponent implements OnInit {
+export class FavoriteSongsComponent implements OnInit {
 
-  public songs: Song;
+  public songs: Song[];
 
-  constructor(private service: SongService) {
-    this.songs = new Song();
-  }
+  constructor(private service: SongService) { }
 
   ngOnInit(): void {
-    console.log(this.songs);
-    this.getSongs();
-  }
-
-  getSongs() {
-    this.service.getSongs().subscribe((res: any) => {
-      console.log(res);
+    const user = JSON.parse(localStorage.getItem('user'));
+    this.service.getFavoriteSongs(user._id).subscribe((res: any) => {
       switch (res.statusCode) {
         case 400:
           alert('No hay canciones registradas');
           break;
         case 200:
           console.log('Listado de canciones');
-          this.songs = res.music;
+          this.songs = res.user.favoriteSongs;
           break;
         default:
           alert('Error de conexión');
           break;
       }
-      console.log(this.songs);
+    console.log(this.songs);
     });
   }
 

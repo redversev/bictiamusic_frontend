@@ -47,4 +47,8 @@ export class SongService {
       options
     ).pipe(res => res);
   }
+
+  getFavoriteSongs(userId){
+    return this.http.get(`${this.apiURL}/user/favoriteSongs/${userId}`).pipe( res => res );
+  }
 }
