@@ -1,60 +1,46 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Song } from '../../models/song';
 import { SongService } from '../../service/song.service';
 
 @Component({
-  selector: 'app-music-list',
-  templateUrl: './music-list.component.html',
-  styleUrls: ['./music-list.component.css']
+  selector: 'app-favorite-songs',
+  templateUrl: './favorite-songs.component.html',
+  styleUrls: ['./favorite-songs.component.css']
 })
-export class MusicListComponent implements OnInit {
+export class FavoriteSongsComponent implements OnInit {
 
   public songs: Song[];
 
-  constructor(private service: SongService) {
-   this.songs = new Song();
-  }
+  constructor(private service: SongService) { }
 
   ngOnInit(): void {
-    this.getSongs();
-    this.getSongByName();
-  }
-
-  getSongs(){
-    this.service.getSongs().subscribe( (res: any) => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    this.service.getFavoriteSongs(user._id).subscribe((res: any) => {
       switch (res.statusCode) {
         case 400:
           alert('No hay canciones registradas');
           break;
         case 200:
           console.log('Listado de canciones');
-          this.songs = res.music;
+          this.songs = res.user.favoriteSongs;
           break;
         default:
           alert('Error de conexión');
           break;
       }
-      console.log(this.songs);
+    console.log(this.songs);
     });
   }
 
-  getSongByName(){
-    let song = JSON.parse(localStorage.getItem('dataSong'));
-    if (song !== null) {
-      this.songs = song;
-      console.log(this.songs);
-    }else{
-      alert('Oppps...!!!! Canción no encontrada')
-    }
-  }
-
   changeSong(song) {
-    const audio: HTMLMediaElement = document.getElementById('bictiaMusic') as HTMLMediaElement;
-    audio.setAttribute('src', song.audio + '.mp3');
-    this.service.playSong(audio);
+    // Esta comentado ya que el audio no se esta guardando en la BD y produce error
+    // const audio: HTMLMediaElement = document.getElementById('bictiaMusic') as HTMLMediaElement;
+    // audio.setAttribute('src', song.audio + '.mp3');
+    // this.service.playSong(audio);
     document.querySelector('.songName').textContent = song.name;
     document.querySelector('.author').textContent = song.artist;
     document.querySelector('.album').textContent = song.discName;
+
   }
 
   addFav(song) {
