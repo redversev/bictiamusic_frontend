@@ -1,8 +1,6 @@
 <section class="musicList">
   <div class="list">
-
-    <!--<div *ngFor="let song of songs" class="song" (click)="changeSong(song.songUrl)">-->
-    <div *ngFor="let song of songs" class="song" (click)="changeSong(song.audio)">
+    <div *ngFor="let song of songs" class="song" (click)="changeSong(song)">
       <ng-container *ngIf="song.urlImage; else noImage">
           <button>
             <img src="{{ song.urlImage }}" alt="{{ song.name }}">
@@ -14,7 +12,7 @@
             <img src="assets/images/disks/disk2.jpg" alt="{{ song.name }}">
         </button>
         </ng-template>
-
+        
       <div class="details">
         <div>
           {{ song.name }} <br> {{ song.artist }}

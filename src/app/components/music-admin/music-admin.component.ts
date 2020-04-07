@@ -26,7 +26,7 @@ export class MusicAdminComponent implements OnInit {
           alert('No hay canciones registradas');
           break;
         case 200:
-          alert('Listado de canciones');
+          console.log('Listado de canciones');
           this.songs = res.music;
           break;
         default:
@@ -36,10 +36,13 @@ export class MusicAdminComponent implements OnInit {
     });
   }
 
-  changeSong(urlSong) {
-    const video: HTMLMediaElement = document.getElementById('bictiaMusic') as HTMLMediaElement;
-    video.setAttribute('src', urlSong + '.mp3');
-    video.play();
+  changeSong(song) {
+    const audio: HTMLMediaElement = document.getElementById('bictiaMusic') as HTMLMediaElement;
+    audio.setAttribute('src', song.audio + '.mp3');
+    this.service.playSong(audio);
+    document.querySelector('.songName').textContent = song.name;
+    document.querySelector('.author').textContent = song.artist;
+    document.querySelector('.album').textContent = song.discName;
   }
 
 }
