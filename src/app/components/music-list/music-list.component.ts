@@ -56,4 +56,14 @@ export class MusicListComponent implements OnInit {
     document.querySelector('.album').textContent = song.discName;
   }
 
+  addFav(song) {
+    const user = JSON.parse(localStorage.getItem('user'));
+    this.service.addFavSong(song._id, user._id).subscribe((res: any) => {
+      console.log(res);
+    });
+  }
+
+  delFav() {
+    console.log("Eliminar de favoritos");
+  }
 }
