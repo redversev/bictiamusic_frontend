@@ -1,7 +1,6 @@
 <div class="search">
-    <form #searchSongForm="ngForm">
-        <!-- <input type="text" class="searchInput" id="searchSong" placeholder="Buscar canciones" #searchSong="ngModel" [(ngModel)]="song.name" (keyup)="searchSong()" /> -->
-        <input type="text" class="searchInput" id="searchSong" placeholder="Buscar canciones" />
-        <button class="buscarCancion">BUSCAR</button>
+    <form #searchSongForm="ngForm" (ngSubmit)="getSongByName();">
+        <input type="text" class="searchInput" name="searchSong" id="searchSong" placeholder="Buscar canciones" #searchSong="ngModel" [(ngModel)]="song.name"/>
+        <button class="buscarCancion"> BUSCAR </button>
     </form>
 </div>  

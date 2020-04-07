@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Song } from '../../models/song';
 import { SongService } from '../../service/song.service';
 
@@ -12,17 +12,16 @@ export class MusicListComponent implements OnInit {
   public songs: Song;
 
   constructor(private service: SongService) {
-    this.songs = new Song();
+   this.songs = new Song();
   }
 
   ngOnInit(): void {
-    console.log(this.songs);
     this.getSongs();
+    this.getSongByName();
   }
 
-  getSongs() {
-    this.service.getSongs().subscribe((res: any) => {
-      console.log(res);
+  getSongs(){
+    this.service.getSongs().subscribe( (res: any) => {
       switch (res.statusCode) {
         case 400:
           alert('No hay canciones registradas');
@@ -38,15 +37,23 @@ export class MusicListComponent implements OnInit {
     });
   }
 
+  getSongByName(){
+    let song = JSON.parse(localStorage.getItem('dataSong'));
+    if (song !== null) {
+      this.songs = song;
+      console.log(this.songs);
+    }else{
+      alert('Oppps...!!!! Canción no encontrada')
+    }
+  }
+
   changeSong(song) {
-    // Esta comentado ya que el audio no se esta guardando en la BD y produce error
-    // const audio: HTMLMediaElement = document.getElementById('bictiaMusic') as HTMLMediaElement;
-    // audio.setAttribute('src', song.audio + '.mp3');
-    // this.service.playSong(audio);
+    const audio: HTMLMediaElement = document.getElementById('bictiaMusic') as HTMLMediaElement;
+    audio.setAttribute('src', song.audio + '.mp3');
+    this.service.playSong(audio);
     document.querySelector('.songName').textContent = song.name;
     document.querySelector('.author').textContent = song.artist;
     document.querySelector('.album').textContent = song.discName;
-
   }
 
   addFav(song) {
