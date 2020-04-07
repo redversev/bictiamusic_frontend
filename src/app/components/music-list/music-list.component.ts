@@ -9,10 +9,9 @@ import { SongService } from '../../service/song.service';
 })
 export class MusicListComponent implements OnInit {
 
-  public songs: Song;
+  public songs: Song[];
 
   constructor(private service: SongService) {
-    this.songs = new Song();
   }
 
   ngOnInit(): void {
@@ -39,12 +38,14 @@ export class MusicListComponent implements OnInit {
   }
 
   changeSong(song) {
-    const audio: HTMLMediaElement = document.getElementById('bictiaMusic') as HTMLMediaElement;
-    audio.setAttribute('src', song.songUrl + '.mp3');
-    this.service.playSong(audio);
-    document.querySelector('.songName').textContent = song.title;
-    document.querySelector('.author').textContent = song.author;
-    document.querySelector('.album').textContent = song.album;
+    console.log(song);
+    // const audio: HTMLMediaElement = document.getElementById('bictiaMusic') as HTMLMediaElement;
+    // audio.setAttribute('src', song.songUrl + '.mp3');
+    // this.service.playSong(audio);
+    // document.querySelector('.songName').textContent = song.title;
+    // document.querySelector('.author').textContent = song.author;
+    // document.querySelector('.album').textContent = song.album;
+    console.log(song.audio);
 
   }
 
