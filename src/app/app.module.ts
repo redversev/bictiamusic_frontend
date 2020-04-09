@@ -4,6 +4,7 @@ import { FormsModule } from "@angular/forms";
 import { Routes, RouterModule } from "@angular/router";
 import { UserService } from './service/user.service'; //nueva para la conexion con
 import { HttpClientModule } from '@angular/common/http'; //las llamadas http
+import { CommonModule } from '@angular/common';
 
 import { AppComponent } from "./app.component";
 import { PrincipalComponent } from "./components/principal/principal.component";
@@ -20,16 +21,16 @@ import { NavDashboardComponent } from './components/nav-dashboard/nav-dashboard.
 import { MusicControlsComponent } from './components/music-controls/music-controls.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { SongService } from './service/song.service';
-import { FavoriteSongsComponent } from "./components/favorite-songs/favorite-songs.component";
+import { CancionesFavoritasComponent } from './components/canciones-favoritas/canciones-favoritas.component';
 
 const register: Routes = [
   { path: "", component: PrincipalComponent },
   { path: "registerUser", component: FormRegisterUserComponent },
   { path: "loginUser", component: FormLoginUserComponent },
   { path: "dashboard", component:  DashboardComponent, children: [
-    {path: "", component: MusicListComponent},
-    {path: "favoriteSongs", component: FavoriteSongsComponent}
-  ]},
+  	{ path:"", component: MusicListComponent },
+  	{ path:"favoriteSongs", component: CancionesFavoritasComponent }
+  ] },
   { path: "acerca", component: AboutUsComponent },
   { path: "admin", component: MusicAdminComponent },
   { path: "updateUser", component:  FormModifyUserComponent}
@@ -50,9 +51,10 @@ const register: Routes = [
     DashboardComponent,
     NavDashboardComponent,
     MusicControlsComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    CancionesFavoritasComponent
   ],
-  imports: [BrowserModule, FormsModule, RouterModule.forRoot(register), HttpClientModule],
+  imports: [BrowserModule, FormsModule, RouterModule.forRoot(register), HttpClientModule, CommonModule],
   providers: [
     UserService,
     SongService

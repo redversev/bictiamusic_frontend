@@ -4,15 +4,15 @@ import { User } from '../../models/user';
 import { SongService } from '../../service/song.service';
 
 @Component({
-  selector: 'app-favorite-songs',
-  templateUrl: './favorite-songs.component.html',
-  styleUrls: ['./favorite-songs.component.css']
+  selector: 'app-canciones-favoritas',
+  templateUrl: './canciones-favoritas.component.html',
+  styleUrls: ['./canciones-favoritas.component.css']
 })
-export class FavoriteSongsComponent implements OnInit {
+export class CancionesFavoritasComponent implements OnInit {
 
   public songs: Song[];
   public user: User;
-
+  
   constructor(private service: SongService) {
   	this.user = new User();
   }
@@ -38,8 +38,8 @@ export class FavoriteSongsComponent implements OnInit {
   		dicName: "Grasp of the Undying"
   	}
   ];
-  
-  getFavSongs() {
+
+	getFavSongs() {
   	const user = JSON.parse(localStorage.getItem('user'));
     this.service.getFavoriteSongs(user._id).subscribe((res: any) => {
       switch (res.statusCode) {
@@ -49,6 +49,7 @@ export class FavoriteSongsComponent implements OnInit {
         case 200:
           console.log('Listado de canciones');
           this.user.favoriteSongs = res.user.favoriteSongs;
+          console.log(this.user.favoriteSongs)
           break;
         default:
           alert('Error de conexión');
