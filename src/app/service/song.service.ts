@@ -7,6 +7,14 @@ export class SongService {
   
   apiURL = "http://localhost:3000/api";
 
+  playingSong = {
+    _id: "",
+    name: "Nombre de la cancion",
+    artist: "Nombre del artista",
+    discName: "Nombre del disco",
+    audio: "./assets/music/MortalReminder.mp3"
+  }
+
   constructor( private http: HttpClient ) { }
 
   /**
@@ -30,6 +38,14 @@ export class SongService {
       song.pause();
       image.setAttribute('src', './assets/images/iconos/play.png');
     }
+  }
+
+  changeSong(song) {
+    this.playingSong._id = song._id;
+    this.playingSong.artist = song.artist;
+    this.playingSong.audio = song.audio;
+    this.playingSong.discName = song.discName;
+    this.playingSong.name = song.name;
   }
 
   /**

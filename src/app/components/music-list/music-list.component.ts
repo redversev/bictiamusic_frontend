@@ -11,7 +11,7 @@ export class MusicListComponent implements OnInit {
 
   public songs: Song[];
 
-  constructor(private service: SongService) {
+  constructor(public service: SongService) {
   }
 
   ngOnInit(): void {
@@ -42,18 +42,7 @@ export class MusicListComponent implements OnInit {
     if (song !== null) {
       this.songs = song;
       console.log(this.songs);
-    }else{
-      alert('Oppps...!!!! Canción no encontrada')
     }
-  }
-
-  changeSong(song) {
-    const audio: HTMLMediaElement = document.getElementById('bictiaMusic') as HTMLMediaElement;
-    audio.setAttribute('src', song.audio + '.mp3');
-    this.service.playSong(audio);
-    document.querySelector('.songName').textContent = song.name;
-    document.querySelector('.author').textContent = song.artist;
-    document.querySelector('.album').textContent = song.discName;
   }
 
   addFav(song) {

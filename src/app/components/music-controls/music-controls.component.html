@@ -1,18 +1,18 @@
 <section class="controls">
-    <audio src="./assets/music/MortalReminder.mp3" id="bictiaMusic"></audio>
+    <audio src="{{ currentSong.audio }}" id="bictiaMusic"></audio>
     <div class="info1">
-        <img src="assets/images/iconos/botonAgregar.png" alt="" />
+        <img class="btnFav" src="assets/images/iconos/botonAgregar.png" (click)="addFav(currentSong._id)" alt="" />
         <p id="time">00:00</p>
     </div>
     <div class="btnControl">
         <img src="./assets/images/iconos/pause.png" (click)="playSong()" id="playImage" alt="">
     </div>
     <div class="info2">
-        <p class="songName">Nombre de la cancion</p>
+        <p class="songName">{{ currentSong.name }}</p>
         <div class="details">
-        	<p class="author">Nombre del artista</p>
+        	<p class="author">{{ currentSong.artist }}</p>
         	<p class="decorator">-</p>
-        	<p class="album">Nombrel del disco</p>
+        	<p class="album">{{ currentSong.discName }}</p>
         </div>
     </div>
 </section>

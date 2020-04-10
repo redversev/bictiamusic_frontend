@@ -12,7 +12,32 @@ export class MusicControlsComponent implements OnInit {
 
   ngOnInit(): void {
     const audio: HTMLMediaElement = document.querySelector('#bictiaMusic') as HTMLMediaElement;
-	  setInterval( () => { this.updateDuration(audio) }, 1000 );
+    setInterval( () => { this.updateDuration(audio) }, 1000 );
+    this.updateSong()
+  }
+
+  currentSong = {
+    _id: "",
+    name: "",
+    artist: "",
+    discName: "",
+    audio: ""
+  }
+
+  updateSong(){
+    this.currentSong._id = this.service.playingSong._id;
+    this.currentSong.name = this.service.playingSong.name;
+    this.currentSong.artist = this.service.playingSong.artist;
+    this.currentSong.discName = this.service.playingSong.discName;
+    this.currentSong.audio = this.service.playingSong.audio;
+  }
+
+  addFav(song) {
+    console.log(song)
+    // const user = JSON.parse(localStorage.getItem('user'));
+    // this.service.addFavSong(song._id, user._id).subscribe((res: any) => {
+    //   console.log(res);
+    // });
   }
 
   playSong(){
