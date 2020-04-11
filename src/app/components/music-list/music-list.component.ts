@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { Song } from '../../models/song';
 import { SongService } from '../../service/song.service';
 
@@ -7,20 +7,24 @@ import { SongService } from '../../service/song.service';
   templateUrl: './music-list.component.html',
   styleUrls: ['./music-list.component.css']
 })
-export class MusicListComponent implements OnInit {
+export class MusicListComponent implements OnInit, OnChanges{
 
-  public songs: Song;
+  public songs: Song[];
 
   constructor(private service: SongService) {
-   this.songs = new Song();
   }
 
   ngOnInit(): void {
     this.getSongs();
-    this.getSongByName();
+    this.getSongsByName();
+  }
+
+  ngOnChanges(): void{
+    this.getSongs();
   }
 
   getSongs(){
+    localStorage.removeItem('dataSong');
     this.service.getSongs().subscribe( (res: any) => {
       switch (res.statusCode) {
         case 400:
@@ -29,22 +33,13 @@ export class MusicListComponent implements OnInit {
         case 200:
           console.log('Listado de canciones');
           this.songs = res.music;
+          console.log(this.songs);
           break;
         default:
           alert('Error de conexión');
           break;
       }
     });
-  }
-
-  getSongByName(){
-    let song = JSON.parse(localStorage.getItem('dataSong'));
-    if (song !== null) {
-      this.songs = song;
-      console.log(this.songs);
-    }else{
-      alert('Oppps...!!!! Canción no encontrada')
-    }
   }
 
   changeSong(song) {
@@ -56,4 +51,11 @@ export class MusicListComponent implements OnInit {
     document.querySelector('.album').textContent = song.discName;
   }
 
+  getSongsByName(){
+    const result = JSON.parse(localStorage.getItem('dataSong'));
+    if (result) {
+      this.songs = result;
+      console.log(this.songs);
+    }
+  }
 }

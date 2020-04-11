@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class SongService {
-  
+
   apiURL = "http://localhost:3000/api";
 
   constructor( private http: HttpClient ) { }
@@ -38,10 +38,19 @@ export class SongService {
    */
   getSongByName(songParams){
     const params = songParams;
-    console.log(params.name);
-    //const options = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
     return this.http.get(
       this.apiURL + '/music/typehead?name=' + params.name
     ).pipe( res => res );
+  }
+
+  /**
+   * Función que elimina una cacnión por su ID
+   * @param idSong ID de la canción a eliminar
+   */
+  deleteSong(idSong){
+    const params = idSong._id;
+    return this.http.delete(
+      this.apiURL + '/music/delete/' + params
+    )
   }
 }
