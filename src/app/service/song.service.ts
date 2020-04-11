@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 export class SongService {
 
   apiURL = "http://localhost:3000/api";
+  private _token = JSON.parse(localStorage.getItem('token'));
 
   constructor( private http: HttpClient ) { }
 
@@ -13,7 +14,9 @@ export class SongService {
    * Función que trae las canciones
    */
   getSongs(){
-    return this.http.get(this.apiURL + '/music/').pipe( res => res );
+    let headers = new HttpHeaders()
+                      .set('token', this._token);
+    return this.http.get(this.apiURL + '/music/', {headers}).pipe( res => res );
   }
 
   /**
@@ -38,19 +41,33 @@ export class SongService {
    */
   getSongByName(songParams){
     const params = songParams;
+    console.log(params.name);
+    let headers = new HttpHeaders()
+                      .set('token', this._token);
     return this.http.get(
-      this.apiURL + '/music/typehead?name=' + params.name
+      this.apiURL + '/music/typehead?name=' + params.name,
+      {headers}
     ).pipe( res => res );
   }
 
+  getFavoriteSongs(userId){
+    let headers = new HttpHeaders()
+                      .set('token', this._token);
+    return this.http.get(`${this.apiURL}/user/favoriteSongs/${userId}`, {headers}).pipe( res => res );
+  }
+  
   /**
-   * Función que elimina una cacnión por su ID
-   * @param idSong ID de la canción a eliminar
+   * Funcion para añadir canciones a favoritos
+   * @param idSong Id de la cancion que se va a añadir como favorita
+   * @param userId Id del usuario que la va a añadir
    */
-  deleteSong(idSong){
-    const params = idSong._id;
-    return this.http.delete(
-      this.apiURL + '/music/delete/' + params
-    )
+  addFavSong(idSong, userId) {
+    const params = JSON.stringify({songId: idSong});
+    const options = { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'token': this._token }) };
+    return this.http.put(
+      `${this.apiURL}/user/${userId}`,
+      params,
+      options
+    ).pipe(res => res);
   }
 }

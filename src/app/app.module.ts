@@ -1,5 +1,5 @@
 import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
+import { NgModule, Component } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { Routes, RouterModule } from "@angular/router";
 import { UserService } from './service/user.service'; //nueva para la conexion con
@@ -20,12 +20,16 @@ import { NavDashboardComponent } from './components/nav-dashboard/nav-dashboard.
 import { MusicControlsComponent } from './components/music-controls/music-controls.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { SongService } from './service/song.service';
+import { FavoriteSongsComponent } from "./components/favorite-songs/favorite-songs.component";
 
 const register: Routes = [
   { path: "", component: PrincipalComponent },
   { path: "registerUser", component: FormRegisterUserComponent },
   { path: "loginUser", component: FormLoginUserComponent },
-  { path: "dashboard", component:  DashboardComponent},
+  { path: "dashboard", component:  DashboardComponent, children: [
+    {path: "", component: MusicListComponent},
+    {path: "favoriteSongs", component: FavoriteSongsComponent}
+  ]},
   { path: "acerca", component: AboutUsComponent },
   { path: "admin", component: MusicAdminComponent },
   { path: "updateUser", component:  FormModifyUserComponent}

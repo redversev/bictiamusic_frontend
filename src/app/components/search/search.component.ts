@@ -9,7 +9,7 @@ import { SongService } from '../../service/song.service';
 })
 export class SearchComponent implements OnInit {
 
-  public song: Song;
+   public song: Song;
 
   constructor( private service: SongService ) {
     this.song = new Song();

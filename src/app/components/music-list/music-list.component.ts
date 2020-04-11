@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { Component, OnInit, OnChanges } from '@angular/core';
+=======
+import { Component, OnInit } from '@angular/core';
+>>>>>>> b76a46af92b1465a23cb953c17ddb0797a56ab20
 import { Song } from '../../models/song';
 import { SongService } from '../../service/song.service';
 
@@ -39,7 +43,18 @@ export class MusicListComponent implements OnInit, OnChanges{
           alert('Error de conexión');
           break;
       }
+      console.log(this.songs);
     });
+  }
+
+  getSongByName(){
+    let song = JSON.parse(localStorage.getItem('dataSong'));
+    if (song !== null) {
+      this.songs = song;
+      console.log(this.songs);
+    }else{
+      // alert('Oppps...!!!! Canción no encontrada')
+    }
   }
 
   changeSong(song) {

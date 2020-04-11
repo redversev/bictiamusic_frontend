@@ -1,3 +1,5 @@
+import { Song } from "./song";
+
 export class User {
     _id: String;
     firstName: String;
@@ -9,4 +11,5 @@ export class User {
     image: String;
     terms: boolean;
     role: any;
+    favoriteSongs: Array<Song>;
 }
