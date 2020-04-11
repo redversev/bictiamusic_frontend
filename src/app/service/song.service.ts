@@ -63,7 +63,7 @@ export class SongService {
    */
   addFavSong(idSong, userId) {
     const params = JSON.stringify({songId: idSong});
-    const options = { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': this._token }) };
+    const options = { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'token': this._token }) };
     return this.http.put(
       `${this.apiURL}/user/${userId}`,
       params,
