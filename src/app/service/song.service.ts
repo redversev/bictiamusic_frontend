@@ -15,7 +15,7 @@ export class SongService {
    */
   getSongs(){
     let headers = new HttpHeaders()
-                      .set('Authorization', this._token);
+                      .set('token', this._token);
     return this.http.get(this.apiURL + '/music/', {headers}).pipe( res => res );
   }
 
@@ -43,7 +43,7 @@ export class SongService {
     const params = songParams;
     console.log(params.name);
     let headers = new HttpHeaders()
-                      .set('Authorization', this._token);
+                      .set('token', this._token);
     return this.http.get(
       this.apiURL + '/music/typehead?name=' + params.name,
       {headers}
@@ -52,7 +52,7 @@ export class SongService {
 
   getFavoriteSongs(userId){
     let headers = new HttpHeaders()
-                      .set('Authorization', this._token);
+                      .set('token', this._token);
     return this.http.get(`${this.apiURL}/user/favoriteSongs/${userId}`, {headers}).pipe( res => res );
   }
   

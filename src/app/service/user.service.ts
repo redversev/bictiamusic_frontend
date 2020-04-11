@@ -38,7 +38,7 @@ export class UserService {
   }
   updateUser(userParams) {
     const params = JSON.stringify(userParams);
-    const options = { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': this._token }) };
+    const options = { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'token': this._token }) };
     return this.http.put(
       `${this.apiURL}/user/update/${userParams._id}`,
       params,
