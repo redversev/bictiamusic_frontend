@@ -51,11 +51,14 @@ export class MusicListComponent implements OnInit, OnChanges{
     document.querySelector('.album').textContent = song.discName;
   }
 
-  getSongsByName(){
-    const result = JSON.parse(localStorage.getItem('dataSong'));
-    if (result) {
-      this.songs = result;
-      console.log(this.songs);
-    }
+  addFav(song) {
+    const user = JSON.parse(localStorage.getItem('user'));
+    this.service.addFavSong(song._id, user._id).subscribe((res: any) => {
+      console.log(res);
+    });
+  }
+
+  delFav() {
+    console.log("Eliminar de favoritos");
   }
 }

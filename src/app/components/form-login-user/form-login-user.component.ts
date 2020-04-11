@@ -25,6 +25,7 @@ export class FormLoginUserComponent implements OnInit {
     this.lastUser = localStorage.getItem('lastUser');
     console.log('El último usuario registrado: ' + this.lastUser);
   }
+  
 
   login() {
     this.service.login(this.user).subscribe((res: any) => {
