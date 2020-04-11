@@ -1,86 +1,106 @@
-.controls{
-    width: 100%;
-    height: 120px;
-    background-color: #A9B6C4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.controls {
+  width: 100%;
+  height: 120px;
+  background-color: #a9b6c4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .info1 {
-    display: flex;
-    align-items: center;
-	width: 180px;
-	justify-content: center;  
+  display: flex;
+  align-items: center;
+  width: 180px;
+  justify-content: center;
 }
 
-.info1 img {
-	height: auto;
-	width: 50px;
+.info1 .botonFav img {
+  height: auto;
+  width: 50px;
+  cursor: pointer;
 }
 
 .info1 #time {
-    margin-left: 5px;
-	font-size: 40px;
-	width: 95px;
+  margin-left: 5px;
+  font-size: 40px;
+  width: 95px;
 }
 
 .btnControl {
-    margin: 0 10px;
+  margin: 0 10px;
 }
 
 .btnControl img {
-    width: 80px;
-    height: auto;
+  width: 80px;
+  height: auto;
 }
 
 .info2 {
-	justify-content: center;
-	display: flex;
-	flex-direction: column;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
 }
 
-.info2 .songName{
-	font-weight: bold;
-	font-size: 22px;
+.info2 .songName {
+  font-weight: bold;
+  font-size: 22px;
 }
 
 .info2 .details {
-	font-size: 17px;
-	font-weight: normal;
-	display: flex;
-	justify-content: center;
+  font-size: 17px;
+  font-weight: normal;
+  display: flex;
+  justify-content: center;
 }
 
 .info2 .decorator {
-	margin: 0 2px;
+  margin: 0 2px;
 }
+
+.info1 .botonFav .botonFavOff {
+  display: block;
+  /* opacity: 1;
+	transition: .5s all ease; */
+}
+.info1 .botonFav .botonFavOn {
+  display: none;
+  /* opacity: 0;
+	transition: .5s all ease; */
+}
+/*
+  .musicList .list .song:hover .botonFav .botonFavOn{
+	opacity: 1;
+  }
+  .musicList .list .song:hover .botonFav .botonFavOff{
+	opacity: 0;
+  }
+  */
 
 /* MEDIA QUERIES */
 
 @media only screen and (max-width: 1200px) {
-	.info1 {
-		width: 105px;
-	}
-    .info1 img {
-        width: 25px;
-        height: auto;
-    }
-    .info1 #time {
-        font-size: 22px;
-        width: 60px;
-    }
-    .btnControl img {
-        width: 54px;
-    }
-    .info2 .songName{
-	    font-size: 16px;
-    }
-	.info2 .details{
-		flex-direction: column;
-		font-size: 12px
-	}
-	.info2 .decorator {
-		display: none;
-	}
+  .info1 {
+    width: 105px;
+  }
+  .info1 .botonFav img {
+    width: 25px;
+    height: auto;
+  }
+  .info1 #time {
+    font-size: 22px;
+    width: 60px;
+  }
+  .btnControl img {
+    width: 54px;
+  }
+  .info2 .songName {
+    font-size: 16px;
+  }
+  .info2 .details {
+    flex-direction: column;
+    font-size: 12px;
+  }
+  .info2 .decorator {
+    display: none;
+  }
 }

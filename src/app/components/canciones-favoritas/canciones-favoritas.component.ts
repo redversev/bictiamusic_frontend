@@ -10,34 +10,15 @@ import { SongService } from '../../service/song.service';
 })
 export class CancionesFavoritasComponent implements OnInit {
 
-  public songs: Song[];
   public user: User;
   
-  constructor(private service: SongService) {
+  constructor(public service: SongService) {
   	this.user = new User();
   }
 
   ngOnInit(): void {
   	this.getFavSongs() 
   }
-  
-  test = [
-  	{
-  		name: "Blade of the Ruined King",
-  		artist: "Pentakill",
-  		dicName: "Grasp of the Undying"
-  	},
-  	{
-  		name: "Cull",
-  		artist: "Pentakill",
-  		dicName: "Grasp of the Undying"
-  	},
-  	{
-  		name: "Tear of the Goddess",
-  		artist: "Pentakill",
-  		dicName: "Grasp of the Undying"
-  	}
-  ];
 
 	getFavSongs() {
   	const user = JSON.parse(localStorage.getItem('user'));
@@ -56,17 +37,6 @@ export class CancionesFavoritasComponent implements OnInit {
           break;
       }
     });
-  }
-
-  changeSong(song) {
-    // Esta comentado ya que el audio no se esta guardando en la BD y produce error
-    // const audio: HTMLMediaElement = document.getElementById('bictiaMusic') as HTMLMediaElement;
-    // audio.setAttribute('src', song.audio + '.mp3');
-    // this.service.playSong(audio);
-    document.querySelector('.songName').textContent = song.name;
-    document.querySelector('.author').textContent = song.artist;
-    document.querySelector('.album').textContent = song.discName;
-
   }
 
   addFav(song) {
