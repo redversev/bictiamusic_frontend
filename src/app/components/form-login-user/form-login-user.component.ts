@@ -38,8 +38,9 @@ export class FormLoginUserComponent implements OnInit {
           break;
         case 200:
           alert('Bienvenido a Bictia Music');
-          console.log(res.dataUser);
+          console.log(res);
           localStorage.setItem('user', JSON.stringify(res.dataUser));
+          localStorage.setItem('token', JSON.stringify(res.token));
           this.router.navigate(['dashboard']);
           break;
         default:

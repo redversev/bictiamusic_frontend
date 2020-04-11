@@ -15,7 +15,7 @@ export class NavDashboardComponent implements OnInit {
   public user: User;
   public rojo: Boolean = false;
 
-  constructor() { 
+  constructor(private _userService: UserService) { 
     this.user = new User();
   }
 
@@ -35,4 +35,7 @@ export class NavDashboardComponent implements OnInit {
     alert("hi");
   }
 
+  logout(){
+    this._userService.logout();
+  }
 }
