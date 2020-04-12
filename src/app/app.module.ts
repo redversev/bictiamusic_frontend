@@ -24,6 +24,7 @@ import { SongService } from './service/song.service';
 import { AddMusicComponent } from './components/add-music/add-music.component';
 import { EditMusicComponent } from './components/edit-music/edit-music.component';
 import { CancionesFavoritasComponent } from './components/canciones-favoritas/canciones-favoritas.component';
+import { SearchMusicComponent } from './components/search-music/search-music.component';
 
 
 const register: Routes = [
@@ -38,7 +39,8 @@ const register: Routes = [
   { path: "admin", component: MusicAdminComponent },
   { path: "updateUser", component:  FormModifyUserComponent},
   { path: "addMusic", component: AddMusicComponent },
-  { path: "editMusic", component: EditMusicComponent}
+  { path: "editMusic", component: EditMusicComponent},
+  { path: 'musicSearch', component: SearchMusicComponent }
 ];
 
 @NgModule({
@@ -59,7 +61,8 @@ const register: Routes = [
     AboutUsComponent,
     CancionesFavoritasComponent,
     AddMusicComponent,
-    EditMusicComponent
+    EditMusicComponent,
+    SearchMusicComponent
   ],
   imports: [
     BrowserModule,
