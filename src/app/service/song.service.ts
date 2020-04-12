@@ -4,19 +4,27 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class SongService {
-  
+
   apiURL = "http://localhost:3000/api";
   private _token = JSON.parse(localStorage.getItem('token'));
 
-
+  playingSong = {
+    _id: "",
+    name: "Nombre de la cancion",
+    artist: "Nombre del artista",
+    discName: "Nombre del disco",
+    audio: "./assets/music/MortalReminder.mp3"
+  }
+  
   constructor( private http: HttpClient ) { }
 
   /**
    * Función que trae las canciones
-   * @param songParams  Datos de la canción
    */
   getSongs(){
-    return this.http.get(this.apiURL + '/music/').pipe( res => res );
+    let headers = new HttpHeaders()
+                      .set('token', this._token);
+    return this.http.get(this.apiURL + '/music/', {headers}).pipe( res => res );
   }
 
   /**
@@ -34,7 +42,7 @@ export class SongService {
       image.setAttribute('src', './assets/images/iconos/play.png');
     }
   }
-
+  
   /**
    * Función para agregar cancion en la base de datos por parte del administrador
    * @param namesong parametro nombre de la cancion
@@ -75,4 +83,54 @@ createSong(body, imageFile, audioFile) {
   ).pipe(res => res);
 }
   */
+
+  changeSong(song) {
+    this.playingSong._id = song._id;
+    this.playingSong.artist = song.artist;
+    this.playingSong.audio = song.audio;
+    this.playingSong.discName = song.discName;
+    this.playingSong.name = song.name;
+  }
+
+  /**
+   * Función que trae la canción por nombre
+   * @param songParams Datos de la canción
+   */
+  getSongByName(songParams){
+    const params = songParams;
+    let headers = new HttpHeaders()
+                      .set('token', this._token);
+    return this.http.get(
+      this.apiURL + '/music/typehead?name=' + params.name,
+      {headers}
+    ).pipe( res => res );
+  }
+
+  getFavoriteSongs(userId){
+    let headers = new HttpHeaders()
+                      .set('token', this._token);
+    return this.http.get(`${this.apiURL}/user/favoriteSongs/${userId}`, {headers}).pipe( res => res );
+  }
+  
+  /**
+   * Funcion para añadir canciones a favoritos
+   * @param idSong Id de la cancion que se va a añadir como favorita
+   * @param userId Id del usuario que la va a añadir
+   */
+  addFavSong(idSong, userId) {
+    const params = JSON.stringify({songId: idSong});
+    const options = { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'token': this._token }) };
+    return this.http.put(
+      `${this.apiURL}/user/${userId}`,
+      params,
+      options
+    ).pipe(res => res);
+  }
+
+  deleteSong(idSong){
+    const options = { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'token': this._token }) };
+    return this.http.delete(
+      `${this.apiURL}/music/delete/${idSong}`, options
+    )
+  }
 }

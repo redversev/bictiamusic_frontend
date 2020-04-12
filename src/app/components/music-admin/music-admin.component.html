@@ -1,40 +1,35 @@
 <section class="musicList">
-    <div class="list">
-        <table class="table table-dark">
-          <tbody> 
-            <tr *ngFor=" let song of songs" class="song">
-              <th scope="row"> 
-                
-                <ng-container *ngIf="song.image; else noImage">
-                  <button>
-                    <img src="{{ song.image }}" alt="{{ song.title }}">
-                  </button>
-                </ng-container>
-                
-                <ng-template #noImage>
-                  <button>
-                    <img src="assets/images/disks/disk2.jpg" alt="{{ song.title }}">
-                </button>
-                </ng-template>
-              </th>
-              <td> 
-                {{song.title}} <br> {{song.author}} 
-              </td>
-              <td>
-                {{song.album}}
-              </td> 
-              <td>
-                <button class="delete" id="delete">
-                  <img src="assets/images/iconos/delete.png" alt="Eliminar" width="100px">
-                </button>
-              </td>
-              <td>
-                <button class="modify" id="modify">
-                  <img routerLink="/editMusic" src="assets/images/iconos/modify.png" alt="Modificar" width="100px">
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+  <div class="list">
+    <div *ngFor="let song of songs" class="song" (click)="changeSong(song)">
+      <ng-container *ngIf="song.urlImage; else noImage">
+          <button>
+            <img src="{{ song.urlImage }}" alt="{{ song.name }}">
+          </button>
+        </ng-container>
+        
+        <ng-template #noImage>
+          <button>
+            <img src="assets/images/disks/disk2.jpg" alt="{{ song.name }}">
+          </button>
+        </ng-template>
+
+      <div class="details">
+        <div>
+          {{ song.name }} <br> {{ song.artist }}
+        </div>
+        <div class="botonFav">
+          <div class="botonFavOff">
+            <button (click)="deleteSong(song._id)">
+              <img src="/assets/images/iconos/delete.png" alt="Eliminar esta canción">  
+            </button>          
+          </div>
+          <div class="botonFavOff">
+            <a routerLink="form-modify-song">
+              <img src="/assets/images/iconos/modify.png" alt="Modificar esta canción">  
+            </a>         
+          </div>
+        </div>
       </div>
+    </div>
+  </div>
 </section>

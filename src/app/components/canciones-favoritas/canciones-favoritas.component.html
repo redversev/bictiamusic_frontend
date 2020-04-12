@@ -1,17 +1,17 @@
 <section class="musicList">
   <div class="list">
-    <div *ngFor="let song of songs" class="song" (click)="service.changeSong(song);">
+    <div *ngFor="let song of user.favoriteSongs" class="song" (click)="service.changeSong(song);">
       <ng-container *ngIf="song.urlImage; else noImage">
-        <button>
-          <img src="{{ song.urlImage }}" alt="{{ song.name }}">
-        </button>
-      </ng-container>
+          <button>
+            <img src="{{ song.urlImage }}" alt="{{ song.name }}">
+          </button>
+        </ng-container>
         
-      <ng-template #noImage>
-        <button>
-          <img src="assets/images/disks/disk2.jpg" alt="{{ song.name }}">
+        <ng-template #noImage>
+          <button>
+            <img src="assets/images/disks/disk2.jpg" alt="{{ song.name }}">
         </button>
-      </ng-template>
+        </ng-template>
         
       <div class="details">
         <div>

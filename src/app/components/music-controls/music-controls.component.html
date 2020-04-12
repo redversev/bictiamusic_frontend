@@ -1,18 +1,25 @@
 <section class="controls">
-    <audio src="./assets/songs/Cull.mp3" id="bictiaMusic"></audio>
+    <audio src="{{ service.playingSong.audio }}" id="bictiaMusic"></audio>
     <div class="info1">
-        <img src="assets/images/iconos/botonAgregar.png" alt="" />
+        <div class="botonFav">
+            <div class="botonFavOff">
+              <img src="/assets/images/iconos/botonAgregar.png" (click)="addFav(service.playingSong._id)" alt="No me gusta esta canción">            
+            </div>
+            <div class="botonFavOn">
+              <img src="/assets/images/iconos/botonFavorito.png" (click)="delFav()" alt="Me gusta esta canción">            
+            </div>
+          </div>
         <p id="time">00:00</p>
     </div>
     <div class="btnControl">
         <img src="./assets/images/iconos/pause.png" (click)="playSong()" id="playImage" alt="">
     </div>
     <div class="info2">
-        <p class="songName">Nombre de la cancion</p>
+        <p class="songName">{{ service.playingSong.name }}</p>
         <div class="details">
-        	<p class="author">Nombre del artista</p>
+        	<p class="author">{{ service.playingSong.artist }}</p>
         	<p class="decorator">-</p>
-        	<p class="album">Nombrel del disco</p>
+        	<p class="album">{{ service.playingSong.discName }}</p>
         </div>
     </div>
 </section>

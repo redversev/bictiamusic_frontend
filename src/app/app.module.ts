@@ -1,9 +1,10 @@
 import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
+import { NgModule, Component } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { Routes, RouterModule } from "@angular/router";
 import { UserService } from './service/user.service'; //nueva para la conexion con
 import { HttpClientModule } from '@angular/common/http'; //las llamadas http
+import { CommonModule } from '@angular/common';
 
 import { AppComponent } from "./app.component";
 import { PrincipalComponent } from "./components/principal/principal.component";
@@ -22,12 +23,17 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
 import { SongService } from './service/song.service';
 import { AddMusicComponent } from './components/add-music/add-music.component';
 import { EditMusicComponent } from './components/edit-music/edit-music.component';
+import { CancionesFavoritasComponent } from './components/canciones-favoritas/canciones-favoritas.component';
+
 
 const register: Routes = [
   { path: "", component: PrincipalComponent },
   { path: "registerUser", component: FormRegisterUserComponent },
   { path: "loginUser", component: FormLoginUserComponent },
-  { path: "dashboard", component:  DashboardComponent},
+  { path: "dashboard", component:  DashboardComponent, children: [
+  	{ path:"", component: MusicListComponent },
+  	{ path:"favoriteSongs", component: CancionesFavoritasComponent }
+  ] },
   { path: "acerca", component: AboutUsComponent },
   { path: "admin", component: MusicAdminComponent },
   { path: "updateUser", component:  FormModifyUserComponent},
@@ -51,6 +57,7 @@ const register: Routes = [
     NavDashboardComponent,
     MusicControlsComponent,
     AboutUsComponent,
+    CancionesFavoritasComponent,
     AddMusicComponent,
     EditMusicComponent
   ],
@@ -58,7 +65,8 @@ const register: Routes = [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(register),
-    HttpClientModule
+    HttpClientModule,
+    CommonModule
   ],
   providers: [
     UserService,
