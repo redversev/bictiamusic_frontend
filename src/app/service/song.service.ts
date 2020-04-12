@@ -43,17 +43,36 @@ export class SongService {
    * @param photofile parametro nombre de la imagen
    * @param musicFile parametro nombre del archivo de musica
    */
-  creteSong(namesong: string, nameartist: string, namedisc: string, photofile: File, musicFile: File){
+
+  
+  createSong(namesong: string, nameartist: string, namedisc: string, photofile: File, musicFile: File){
     const fd = new FormData();
     const options = { 
-      headers: new HttpHeaders({ "Content-Type": "application/json" })
+      headers: new HttpHeaders({ "Content-Type": "application/json", "token": this._token })
   };
-    fd.append('namesong', namesong);
-    fd.append('nameartist', nameartist);
-    fd.append('namedisc', namedisc);
-    fd.append('image', photofile);
-    fd.append('music', musicFile);
+    fd.append('name', namesong);
+    fd.append('artist', nameartist);
+    fd.append('discName', namedisc);
+    fd.append('urlImage', photofile);
+    fd.append('audio', musicFile);
     return this.http.post(`${this.apiURL}/music/create`, fd, options
       ).pipe(res => res);
   }
+
+/*
+createSong(body, imageFile, audioFile) {
+  const createAt = new Date()
+  const text = JSON.stringify(body);
+  const file = new FormData();
+  const options = { 
+    headers: new HttpHeaders({ "Content-Type": "application/json", "token": this._token })
+};
+  file.append('body', text);
+  file.append('audio', audioFile);
+  file.append('image', imageFile);
+  return this.http.post(`${this.apiURL}/music/create`,
+      file, options
+  ).pipe(res => res);
+}
+  */
 }

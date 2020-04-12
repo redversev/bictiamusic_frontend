@@ -56,7 +56,7 @@ onMusicSelected(event: HtmlInputEvent): void {
     console.log(namedisc.value);
     console.log(this.photofile);
     console.log(this.musicfile);*/
-    this.songservice.creteSong(namesong.value, nameartist.value, namedisc.value, this.photofile, this.musicfile)
+    this.songservice.createSong(namesong.value, nameartist.value, namedisc.value, this.photofile, this.musicfile)
       .subscribe(res => console.log(res), err => console.log(err))
     return false;
   }
