@@ -42,7 +42,6 @@ export class SongService {
       image.setAttribute('src', './assets/images/iconos/play.png');
     }
   }
-  
   /**
    * Función para agregar cancion en la base de datos por parte del administrador
    * @param namesong parametro nombre de la cancion
@@ -51,20 +50,19 @@ export class SongService {
    * @param photofile parametro nombre de la imagen
    * @param musicFile parametro nombre del archivo de musica
    */
-
-  
-  createSong(namesong: string, nameartist: string, namedisc: string, photofile: File, musicFile: File){
+  createSong(body, imageFile, audioFile){
     const fd = new FormData();
-    const options = { 
-      headers: new HttpHeaders({ "Content-Type": "application/json", "token": this._token })
+    const text = JSON.stringify(body);
+    fd.append('body', text);
+    fd.append('audio', audioFile);
+    fd.append('image', imageFile);
+    const options = {
+      headers: new HttpHeaders({ "token": this._token })
   };
-    fd.append('name', namesong);
-    fd.append('artist', nameartist);
-    fd.append('discName', namedisc);
-    fd.append('urlImage', photofile);
-    fd.append('audio', musicFile);
-    return this.http.post(`${this.apiURL}/music/create`, fd, options
-      ).pipe(res => res);
+    return this.http.post(`${this.apiURL}/music/create`,
+      fd,
+      options
+    ).pipe(res => res);
   }
 
 /*
@@ -72,7 +70,7 @@ createSong(body, imageFile, audioFile) {
   const createAt = new Date()
   const text = JSON.stringify(body);
   const file = new FormData();
-  const options = { 
+  const options = {
     headers: new HttpHeaders({ "Content-Type": "application/json", "token": this._token })
 };
   file.append('body', text);
@@ -107,11 +105,10 @@ createSong(body, imageFile, audioFile) {
   }
 
   getFavoriteSongs(userId){
-    let headers = new HttpHeaders()
+    const headers = new HttpHeaders()
                       .set('token', this._token);
     return this.http.get(`${this.apiURL}/user/favoriteSongs/${userId}`, {headers}).pipe( res => res );
   }
-  
   /**
    * Funcion para añadir canciones a favoritos
    * @param idSong Id de la cancion que se va a añadir como favorita

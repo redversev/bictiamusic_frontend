@@ -15,16 +15,14 @@ interface HtmlInputEvent extends Event {
 })
 
 export class AddMusicComponent implements OnInit {
-  
   public song: Song;
-  
-  photoSelected: string | ArrayBuffer;
-  photofile: File;
-
-  musicSelected: string | ArrayBuffer;
-  musicfile: File;
-
-  constructor(private songservice: SongService, private router: Router) { }
+  public photoSelected: string | ArrayBuffer;
+  public photofile: File;
+  public musicSelected: string | ArrayBuffer;
+  public musicfile: File;
+  constructor(private songservice: SongService, private router: Router) {
+    this.song = new Song();
+   }
 
   ngOnInit(): void {
   }
@@ -39,25 +37,25 @@ export class AddMusicComponent implements OnInit {
     }
   }
 
-onMusicSelected(event: HtmlInputEvent): void {
-  if (event.target.files && event.target.files[0]) {
-    this.musicfile = <File>event.target.files[0];
-    const fileName = event.target.files[0].name;
-    const reader2 = new FileReader();
-    reader2.onload = e => this.musicSelected = reader2.result;
-    reader2.readAsDataURL(this.musicfile);
+  onMusicSelected(event: HtmlInputEvent): void {
+    if (event.target.files && event.target.files[0]) {
+      this.musicfile = <File>event.target.files[0];
+      const fileName = event.target.files[0].name;
+      const reader2 = new FileReader();
+      reader2.onload = e => this.musicSelected = reader2.result;
+      reader2.readAsDataURL(this.musicfile);
+    }
   }
-}
 
 
-  uploadMusic(namesong: HTMLInputElement, nameartist: HTMLInputElement, namedisc: HTMLInputElement): boolean {
-    /*console.log(namesong.value);
-    console.log(nameartist.value);
-    console.log(namedisc.value);
-    console.log(this.photofile);
-    console.log(this.musicfile);*/
-    this.songservice.createSong(namesong.value, nameartist.value, namedisc.value, this.photofile, this.musicfile)
-      .subscribe(res => console.log(res), err => console.log(err))
-    return false;
+  uploadMusic() {
+    this.songservice.createSong(this.song, this.photofile, this.musicfile)
+      .subscribe((res: any) => {
+        if (res.statusCode === 200) {
+          alert('canción creada correctamente');
+        } else {
+          alert(`Algo malo ha ocurrido ${res.statusCode} , ${res.message}`);
+        }
+    });
   }
 }
