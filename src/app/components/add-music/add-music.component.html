@@ -1,0 +1,65 @@
+<section class="dashboard">
+  <div class="nav">
+    <app-nav-dashboard></app-nav-dashboard>
+  </div>
+
+  <div>
+    <div class="musicList">
+      <app-music-admin></app-music-admin>
+    </div>
+  </div>
+
+  <ng-template #usuario>
+    <div class="musicList">
+      <app-music-list></app-music-list>
+    </div>
+  </ng-template>
+  <div class="musicControls">
+    <app-music-controls></app-music-controls>
+  </div>
+</section>
+
+
+<div class="overlay">
+  <div class="popup">
+    <h3>Agregar Cancion</h3>
+    <form (submit)="uploadMusic(namesong, nameartist, namedisc)">
+      <div class="container-inputs">
+        <input type="text" placeholder="Nombre de la cancion" #namesong>
+        <input type="text" placeholder="Nombre del artista" #nameartist>
+        <input type="text" placeholder="Nombre del disco" #namedisc>
+
+        <!--Upload Image File-->
+        <div class="upload-image">
+          <input type="file" class="" (change)="onPhotoSelected($event)" #photoInput hidden>
+          <div class="submit-1">
+            <button type="button" class="btn-submit" (click)="photoInput.click($event)">Agregar Foto</button>
+          </div>
+          <div class="submit-2">
+            <img [src]="photoSelected || '/assets/images/iconos/no-image.png'" class="img-fluid" alt="No image">
+          </div>
+        </div>
+
+        <!--Upload Misic File-->
+        <div class="upload-music">
+          <button type="button" class="btn-submit" (click)="musicFile.click($event)">Agrega Musica</button>
+          <div *ngIf="!musicFile?.files[0]?.name; else templateName">
+            <h5>No hay archivo seleccionado</h5>
+          </div>
+          <div>
+            <ng-template #templateName>
+              <h5> {{ musicFile?.files[0]?.name }}</h5>
+            </ng-template>
+          </div>
+          <input hidden type="file" #musicFile (change)="onMusicSelected($event)" />
+        </div>
+
+      </div>
+      <div>
+        <button class="btn-submit" routerLink="/dashboard">Cancelar</button>
+        <button class="btn-submit">Agregar</button>
+
+      </div>
+    </form>
+  </div>
+</div>

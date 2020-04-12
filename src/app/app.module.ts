@@ -20,6 +20,8 @@ import { NavDashboardComponent } from './components/nav-dashboard/nav-dashboard.
 import { MusicControlsComponent } from './components/music-controls/music-controls.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { SongService } from './service/song.service';
+import { AddMusicComponent } from './components/add-music/add-music.component';
+import { EditMusicComponent } from './components/edit-music/edit-music.component';
 
 const register: Routes = [
   { path: "", component: PrincipalComponent },
@@ -28,7 +30,9 @@ const register: Routes = [
   { path: "dashboard", component:  DashboardComponent},
   { path: "acerca", component: AboutUsComponent },
   { path: "admin", component: MusicAdminComponent },
-  { path: "updateUser", component:  FormModifyUserComponent}
+  { path: "updateUser", component:  FormModifyUserComponent},
+  { path: "addMusic", component: AddMusicComponent },
+  { path: "editMusic", component: EditMusicComponent}
 ];
 
 @NgModule({
@@ -46,9 +50,16 @@ const register: Routes = [
     DashboardComponent,
     NavDashboardComponent,
     MusicControlsComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    AddMusicComponent,
+    EditMusicComponent
   ],
-  imports: [BrowserModule, FormsModule, RouterModule.forRoot(register), HttpClientModule],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    RouterModule.forRoot(register),
+    HttpClientModule
+  ],
   providers: [
     UserService,
     SongService

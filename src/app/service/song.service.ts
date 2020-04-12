@@ -6,6 +6,8 @@ import { Observable } from 'rxjs';
 export class SongService {
   
   apiURL = "http://localhost:3000/api";
+  private _token = JSON.parse(localStorage.getItem('token'));
+
 
   constructor( private http: HttpClient ) { }
 
@@ -31,5 +33,27 @@ export class SongService {
       song.pause();
       image.setAttribute('src', './assets/images/iconos/play.png');
     }
+  }
+
+  /**
+   * Función para agregar cancion en la base de datos por parte del administrador
+   * @param namesong parametro nombre de la cancion
+   * @param nameartist parametro nombre del artista
+   * @param namedisc parametro nombre del disco
+   * @param photofile parametro nombre de la imagen
+   * @param musicFile parametro nombre del archivo de musica
+   */
+  creteSong(namesong: string, nameartist: string, namedisc: string, photofile: File, musicFile: File){
+    const fd = new FormData();
+    const options = { 
+      headers: new HttpHeaders({ "Content-Type": "application/json" })
+  };
+    fd.append('namesong', namesong);
+    fd.append('nameartist', nameartist);
+    fd.append('namedisc', namedisc);
+    fd.append('image', photofile);
+    fd.append('music', musicFile);
+    return this.http.post(`${this.apiURL}/music/create`, fd, options
+      ).pipe(res => res);
   }
 }
