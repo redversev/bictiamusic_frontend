@@ -8,11 +8,30 @@ import { SongService } from "../../service/song.service";
 })
 export class MusicControlsComponent implements OnInit {
 
-  constructor(private service: SongService) {}
+  constructor(public service: SongService) {}
 
   ngOnInit(): void {
     const audio: HTMLMediaElement = document.querySelector('#bictiaMusic') as HTMLMediaElement;
-	  setInterval( () => { this.updateDuration(audio) }, 1000 );
+    setInterval( () => { this.updateDuration(audio) }, 1000 );
+  }
+
+  currentSong = {
+    _id: "this.service.playingSong._id",
+    name: "this.service.playingSong.name",
+    artist: "this.service.playingSong.artist",
+    discName: "this.service.playingSong.discName",
+    audio: "this.service.playingSong.audio"
+  }
+
+  addFav(song) {
+    const user = JSON.parse(localStorage.getItem('user'));
+    this.service.addFavSong(song._id, user._id).subscribe((res: any) => {
+      console.log(res);
+    });
+  }
+
+  delFav() {
+    console.log("Eliminar de favoritos");
   }
 
   playSong(){

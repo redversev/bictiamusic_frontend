@@ -1,52 +1,42 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Song } from '../../models/song';
+import { User } from '../../models/user';
 import { SongService } from '../../service/song.service';
 
 @Component({
-  selector: 'app-music-list',
-  templateUrl: './music-list.component.html',
-  styleUrls: ['./music-list.component.css']
+  selector: 'app-canciones-favoritas',
+  templateUrl: './canciones-favoritas.component.html',
+  styleUrls: ['./canciones-favoritas.component.css']
 })
-export class MusicListComponent implements OnInit, OnChanges{
+export class CancionesFavoritasComponent implements OnInit {
 
-  public songs: Song[];
-
+  public user: User;
+  
   constructor(public service: SongService) {
+  	this.user = new User();
   }
 
   ngOnInit(): void {
-    this.getSongs();
-    this.getSongByName();
+  	this.getFavSongs() 
   }
 
-  ngOnChanges(): void{
-    this.getSongs();
-  }
-
-  getSongs(){
-    localStorage.removeItem('dataSong');
-    this.service.getSongs().subscribe( (res: any) => {
+	getFavSongs() {
+  	const user = JSON.parse(localStorage.getItem('user'));
+    this.service.getFavoriteSongs(user._id).subscribe((res: any) => {
       switch (res.statusCode) {
         case 400:
           alert('No hay canciones registradas');
           break;
         case 200:
           console.log('Listado de canciones');
-          this.songs = res.music;
+          this.user.favoriteSongs = res.user.favoriteSongs;
+          console.log(this.user.favoriteSongs)
           break;
         default:
           alert('Error de conexión');
           break;
       }
     });
-  }
-
-  getSongByName(){
-    let song = JSON.parse(localStorage.getItem('dataSong'));
-    if (song !== null) {
-      this.songs = song;
-      console.log(this.songs);
-    }
   }
 
   addFav(song) {
