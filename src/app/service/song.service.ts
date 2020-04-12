@@ -15,7 +15,7 @@ export class SongService {
     discName: "Nombre del disco",
     audio: "./assets/music/MortalReminder.mp3"
   }
-
+  
   constructor( private http: HttpClient ) { }
 
   /**
@@ -42,6 +42,47 @@ export class SongService {
       image.setAttribute('src', './assets/images/iconos/play.png');
     }
   }
+  
+  /**
+   * Función para agregar cancion en la base de datos por parte del administrador
+   * @param namesong parametro nombre de la cancion
+   * @param nameartist parametro nombre del artista
+   * @param namedisc parametro nombre del disco
+   * @param photofile parametro nombre de la imagen
+   * @param musicFile parametro nombre del archivo de musica
+   */
+
+  
+  createSong(namesong: string, nameartist: string, namedisc: string, photofile: File, musicFile: File){
+    const fd = new FormData();
+    const options = { 
+      headers: new HttpHeaders({ "Content-Type": "application/json", "token": this._token })
+  };
+    fd.append('name', namesong);
+    fd.append('artist', nameartist);
+    fd.append('discName', namedisc);
+    fd.append('urlImage', photofile);
+    fd.append('audio', musicFile);
+    return this.http.post(`${this.apiURL}/music/create`, fd, options
+      ).pipe(res => res);
+  }
+
+/*
+createSong(body, imageFile, audioFile) {
+  const createAt = new Date()
+  const text = JSON.stringify(body);
+  const file = new FormData();
+  const options = { 
+    headers: new HttpHeaders({ "Content-Type": "application/json", "token": this._token })
+};
+  file.append('body', text);
+  file.append('audio', audioFile);
+  file.append('image', imageFile);
+  return this.http.post(`${this.apiURL}/music/create`,
+      file, options
+  ).pipe(res => res);
+}
+  */
 
   changeSong(song) {
     this.playingSong._id = song._id;
