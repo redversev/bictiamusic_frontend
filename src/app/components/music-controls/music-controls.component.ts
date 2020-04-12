@@ -42,7 +42,7 @@ export class MusicControlsComponent implements OnInit {
   /**
    * Esta funcion verifica cual es el tiempo actual de la etiqueta audio y llama al decorador
    * @param audio Como parametro recibe la etiqueta audio que tiene que tener el tipo HTMLMediaElement
-   * @constant duracion Esta variable alamacena la etiqueta de tiempo, la cual se va a mostrar al usuario
+   * @constant duracion Esta variable almacena la etiqueta de tiempo, la cual se va a mostrar al usuario
    * @var tiempo audio.currentTime nos devuelve la duracion como un flotante, lo aproximo a un entero
    */
   updateDuration(audio){

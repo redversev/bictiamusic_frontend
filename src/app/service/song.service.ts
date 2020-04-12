@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 export class SongService {
   
   apiURL = "http://localhost:3000/api";
+  private _token = JSON.parse(localStorage.getItem('token'));
 
   playingSong = {
     _id: "",
@@ -21,7 +22,9 @@ export class SongService {
    * Función que trae las canciones
    */
   getSongs(){
-    return this.http.get(this.apiURL + '/music/').pipe( res => res );
+    let headers = new HttpHeaders()
+                      .set('token', this._token);
+    return this.http.get(this.apiURL + '/music/', {headers}).pipe( res => res );
   }
 
   /**
@@ -55,14 +58,18 @@ export class SongService {
   getSongByName(songParams){
     const params = songParams;
     console.log(params.name);
-    //const options = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+    let headers = new HttpHeaders()
+                      .set('token', this._token);
     return this.http.get(
-      this.apiURL + '/music/typehead?name=' + params.name
+      this.apiURL + '/music/typehead?name=' + params.name,
+      {headers}
     ).pipe( res => res );
   }
 
   getFavoriteSongs(userId){
-    return this.http.get(`${this.apiURL}/user/favoriteSongs/${userId}`).pipe( res => res );
+    let headers = new HttpHeaders()
+                      .set('token', this._token);
+    return this.http.get(`${this.apiURL}/user/favoriteSongs/${userId}`, {headers}).pipe( res => res );
   }
   
   /**
@@ -72,7 +79,7 @@ export class SongService {
    */
   addFavSong(idSong, userId) {
     const params = JSON.stringify({songId: idSong});
-    const options = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+    const options = { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'token': this._token }) };
     return this.http.put(
       `${this.apiURL}/user/${userId}`,
       params,

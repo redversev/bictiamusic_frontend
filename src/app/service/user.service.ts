@@ -5,6 +5,7 @@ import { Observable } from "rxjs";
 @Injectable()
 export class UserService {
   apiURL = "http://localhost:3000/api";
+  private _token = JSON.parse(localStorage.getItem('token'));
   constructor(private http: HttpClient) {}
 
   /**
@@ -37,12 +38,16 @@ export class UserService {
   }
   updateUser(userParams) {
     const params = JSON.stringify(userParams);
-    const options = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+    const options = { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'token': this._token }) };
     return this.http.put(
       `${this.apiURL}/user/update/${userParams._id}`,
       params,
       options
     ).pipe( res => res );
+  }
+
+  logout(): void {
+    localStorage.clear();
   }
 
 
