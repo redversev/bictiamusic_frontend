@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import { Component, OnInit, OnChanges } from '@angular/core';
-=======
-import { Component, OnInit } from '@angular/core';
->>>>>>> b76a46af92b1465a23cb953c17ddb0797a56ab20
 import { Song } from '../../models/song';
 import { SongService } from '../../service/song.service';
 
@@ -20,7 +16,7 @@ export class MusicListComponent implements OnInit, OnChanges{
 
   ngOnInit(): void {
     this.getSongs();
-    this.getSongsByName();
+    this.getSongByName();
   }
 
   ngOnChanges(): void{
@@ -37,13 +33,11 @@ export class MusicListComponent implements OnInit, OnChanges{
         case 200:
           console.log('Listado de canciones');
           this.songs = res.music;
-          console.log(this.songs);
           break;
         default:
           alert('Error de conexión');
           break;
       }
-      console.log(this.songs);
     });
   }
 

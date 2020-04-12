@@ -52,7 +52,6 @@ export class MusicAdminComponent implements OnInit, OnChanges {
   deleteSong(idSong){
     Swal.fire({
       title: '¿Esta seguro que desea eliminar esta canción?',
-      text: "Una canción sera eliminada!",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -62,7 +61,7 @@ export class MusicAdminComponent implements OnInit, OnChanges {
       if (result.value) {
         Swal.fire(
           'Eliminada!',
-          'La cacnión ha sido eliminada!',
+          'La canción ha sido eliminada!',
           'success'
         )
         this.service.deleteSong(idSong).subscribe( (res: any) => {
