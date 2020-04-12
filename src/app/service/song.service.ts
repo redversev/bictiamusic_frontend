@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class SongService {
-  
+
   apiURL = "http://localhost:3000/api";
   private _token = JSON.parse(localStorage.getItem('token'));
 
@@ -41,7 +41,6 @@ export class SongService {
    */
   getSongByName(songParams){
     const params = songParams;
-    console.log(params.name);
     let headers = new HttpHeaders()
                       .set('token', this._token);
     return this.http.get(
@@ -69,5 +68,12 @@ export class SongService {
       params,
       options
     ).pipe(res => res);
+  }
+
+  deleteSong(idSong){
+    const options = { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'token': this._token }) };
+    return this.http.delete(
+      `${this.apiURL}/music/delete/${idSong}`, options
+    )
   }
 }

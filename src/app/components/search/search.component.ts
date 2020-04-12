@@ -11,7 +11,7 @@ export class SearchComponent implements OnInit {
 
    public song: Song;
 
-  constructor( private service: SongService ) { 
+  constructor( private service: SongService ) {
     this.song = new Song();
   }
 
@@ -20,7 +20,6 @@ export class SearchComponent implements OnInit {
 
   getSongByName(){
     this.service.getSongByName(this.song).subscribe( (res: any) => {
-      console.log(res.songs);
       switch ( res.statusCode ) {
         case 400:
           alert('Canción no encontrada');
@@ -36,5 +35,4 @@ export class SearchComponent implements OnInit {
       }
     });
   }
-
 }

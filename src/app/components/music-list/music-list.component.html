@@ -2,16 +2,16 @@
   <div class="list">
     <div *ngFor="let song of songs" class="song" (click)="changeSong(song)">
       <ng-container *ngIf="song.urlImage; else noImage">
-          <button>
-            <img src="{{ song.urlImage }}" alt="{{ song.name }}">
-          </button>
-        </ng-container>
-        
-        <ng-template #noImage>
-          <button>
-            <img src="assets/images/disks/disk2.jpg" alt="{{ song.name }}">
+        <button>
+          <img src="{{ song.urlImage }}" alt="{{ song.name }}">
         </button>
-        </ng-template>
+      </ng-container>
+        
+      <ng-template #noImage>
+        <button>
+          <img src="assets/images/disks/disk2.jpg" alt="{{ song.name }}">
+        </button>
+      </ng-template>
         
       <div class="details">
         <div>

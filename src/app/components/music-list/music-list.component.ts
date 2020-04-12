@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { Song } from '../../models/song';
 import { SongService } from '../../service/song.service';
 
@@ -7,7 +7,7 @@ import { SongService } from '../../service/song.service';
   templateUrl: './music-list.component.html',
   styleUrls: ['./music-list.component.css']
 })
-export class MusicListComponent implements OnInit {
+export class MusicListComponent implements OnInit, OnChanges{
 
   public songs: Song[];
 
@@ -19,7 +19,12 @@ export class MusicListComponent implements OnInit {
     this.getSongByName();
   }
 
+  ngOnChanges(): void{
+    this.getSongs();
+  }
+
   getSongs(){
+    localStorage.removeItem('dataSong');
     this.service.getSongs().subscribe( (res: any) => {
       switch (res.statusCode) {
         case 400:
@@ -33,7 +38,6 @@ export class MusicListComponent implements OnInit {
           alert('Error de conexión');
           break;
       }
-      console.log(this.songs);
     });
   }
 
