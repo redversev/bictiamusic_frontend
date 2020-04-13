@@ -31,8 +31,9 @@ export class NavDashboardComponent implements OnInit {
       this.class = 'dashboardNavAdmin';
     }
   }
-  abrirBuscador(){
-    alert("hi");
+  openSearch(){
+    console.log("OpenSearch");
+    document.getElementById('buscador').classList.toggle("abrirBuscador");
   }
 
   logout(){
