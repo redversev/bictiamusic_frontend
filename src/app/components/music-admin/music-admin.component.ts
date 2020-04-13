@@ -42,14 +42,12 @@ export class MusicAdminComponent implements OnInit, OnChanges {
   }
 
   changeSong(song) {
-    const audio: HTMLMediaElement = document.getElementById(
-      "bictiaMusic"
-    ) as HTMLMediaElement;
-    audio.setAttribute("src", song.audio + ".mp3");
-    this.service.playSong(audio);
-    document.querySelector(".songName").textContent = song.name;
-    document.querySelector(".author").textContent = song.artist;
-    document.querySelector(".album").textContent = song.discName;
+    const audio: HTMLMediaElement = document.getElementById('bictiaMusic') as HTMLMediaElement;
+    audio.setAttribute('src', song.audio + '.mp3');
+    this.service.playSong();
+    document.querySelector('.songName').textContent = song.name;
+    document.querySelector('.author').textContent = song.artist;
+    document.querySelector('.album').textContent = song.discName;
   }
 
   deleteSong(idSong) {

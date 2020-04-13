@@ -3,7 +3,7 @@
     <div *ngFor="let song of user.favoriteSongs" class="song" (click)="service.changeSong(song);">
       <ng-container *ngIf="song.urlImage; else noImage">
           <button>
-            <img src="{{ song.urlImage }}" alt="{{ song.name }}">
+            <img src="http://localhost:3000/api/music/image/{{ song.urlImage }}" alt="{{ song.name }}">
           </button>
         </ng-container>
         
