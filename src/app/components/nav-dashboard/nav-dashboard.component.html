@@ -8,12 +8,14 @@
     </div>
     <div class="navOptions">
       <p class="nombre">Usuario: {{userName}} </p>
-      <img src="assets/images/iconos/search.png" class="btnBuscar" alt="buscar">
+      <img src="assets/images/iconos/search.png" class="btnBuscar" alt="buscar" (click)="openSearch()">
     </div>
     <div class="iconos">
       <div *ngIf="role==='ADMIN'">
         <!-- <div class="btn" routerLink="/"><img src="assets/images/iconos/agregarCancion.png" alt="Agregar canción"/></div> -->
         <div class="btn" routerLink="/addMusic"><img src="assets/images/iconos/agregarCancion.png" alt="Agregar canción" /></div>
+      </div>
+      <div class="btn" routerLink="/dashboard"><img src="assets/images/iconos/listaCanciones.png" alt="Listado de Canciones" />
       </div>
       <div class="btn" routerLink="/dashboard/favoriteSongs"><img src="assets/images/iconos/favorito.png" alt="Agregar Canción a Favorita" />
       </div>

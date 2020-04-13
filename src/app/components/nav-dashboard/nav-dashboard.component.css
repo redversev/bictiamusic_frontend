@@ -106,6 +106,10 @@
 /* MEDIA QUERIES */
 
 @media only screen and (max-width: 1200px) {
+
+  .dashboardNav{
+    height: auto;
+  }
    .dashboardNav .content .logo{
     width: 160px;
 	}
@@ -127,25 +131,28 @@
   }
   .navOptions{
     order: 2;
-    width: 30%;
+    width: 50px;
+  }
+  .navOptions img {
+    margin-left: 0;
   }
   .iconos{
     order: 3;
-    width: 30%;
   }
   .btnBuscar{
     display: block;
     cursor: pointer;
   }
   .buscador{
-    display: none;
     order: 4;
     width: 100%;
     text-align: center;
     transition: .5s all ease;
+    max-height: 0;
+    overflow: hidden;
   }
   .abrirBuscador{
-    height: 200px;
+    max-height: 80px;
   }
 
 }
