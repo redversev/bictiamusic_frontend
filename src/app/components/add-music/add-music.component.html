@@ -1,65 +1,79 @@
 <section class="dashboard">
-  <div class="nav">
-    <app-nav-dashboard></app-nav-dashboard>
-  </div>
-
-  <div>
-    <div class="musicList">
-      <app-music-admin></app-music-admin>
+    <div class="nav">
+        <app-nav-dashboard></app-nav-dashboard>
     </div>
-  </div>
 
-  <ng-template #usuario>
-    <div class="musicList">
-      <app-music-list></app-music-list>
+    <div>
+        <div class="musicList">
+            <app-music-admin></app-music-admin>
+        </div>
     </div>
-  </ng-template>
-  <div class="musicControls">
-    <app-music-controls></app-music-controls>
-  </div>
+
+    <ng-template #usuario>
+        <div class="musicList">
+            <app-music-list></app-music-list>
+        </div>
+    </ng-template>
+    <div class="musicControls">
+        <app-music-controls></app-music-controls>
+    </div>
 </section>
 
 
 <div class="overlay">
-  <div class="popup">
-    <h3>Agregar Cancion</h3>
-    <form (submit)="uploadMusic(namesong, nameartist, namedisc)">
-      <div class="container-inputs">
-        <input type="text" placeholder="Nombre de la cancion" #namesong>
-        <input type="text" placeholder="Nombre del artista" #nameartist>
-        <input type="text" placeholder="Nombre del disco" #namedisc>
+    <div class="popup">
+        <h3>Agregar Cancion</h3>
+        <form #signUpForm="ngForm" (ngSubmit)="uploadMusic()">
+            <div class="container-inputs">
+                <input name="songName" #name="ngModel" [(ngModel)]="song.name" type="text"
+                    placeholder="Nombre de la cancion" #name>
+                <input name="songArtist" #artist="ngModel" [(ngModel)]="song.artist" type="text"
+                    placeholder="Nombre del artista" #artist>
+                <input name="songDisc" #namedisc="ngModel" [(ngModel)]="song.discName" type="text"
+                    placeholder="Nombre del disco" #namedisc>
+                <input name="songGenre" #genre="ngModel" [(ngModel)]="song.genre" type="text"
+                    placeholder="Genero de música" #genre>
+                <input name="songComposer" #composer="ngModel" [(ngModel)]="song.composer" type="text"
+                    placeholder="Compositor" #composer>
+                <label for="songDate">Fecha de la canción</label>
+                <input name='songDate' #createAt="ngModel" [(ngModel)]="song.createAt" type="date" #createAt>
 
-        <!--Upload Image File-->
-        <div class="upload-image">
-          <input type="file" class="" (change)="onPhotoSelected($event)" #photoInput hidden>
-          <div class="submit-1">
-            <button type="button" class="btn-submit" (click)="photoInput.click($event)">Agregar Foto</button>
-          </div>
-          <div class="submit-2">
-            <img [src]="photoSelected || '/assets/images/iconos/no-image.png'" class="img-fluid" alt="No image">
-          </div>
-        </div>
 
-        <!--Upload Misic File-->
-        <div class="upload-music">
-          <button type="button" class="btn-submit" (click)="musicFile.click($event)">Agrega Musica</button>
-          <div *ngIf="!musicFile?.files[0]?.name; else templateName">
-            <h5>No hay archivo seleccionado</h5>
-          </div>
-          <div>
-            <ng-template #templateName>
-              <h5> {{ musicFile?.files[0]?.name }}</h5>
-            </ng-template>
-          </div>
-          <input hidden type="file" #musicFile (change)="onMusicSelected($event)" />
-        </div>
+                <!--Upload Image File-->
+                <div class="upload-image">
+                    <input name="image" type="file" accept="image/*" class="" (change)="onPhotoSelected($event)"
+                        #photoInput hidden>
+                    <div class="submit-1">
+                        <button type="button" class="btn-submit" (click)="photoInput.click($event)">Agregar
+                            Foto</button>
+                    </div>
+                    <div class="submit-2">
+                        <img [src]="photoSelected || '/assets/images/iconos/no-image.png'" class="img-fluid"
+                            alt="No image">
+                    </div>
+                </div>
 
-      </div>
-      <div>
-        <button class="btn-submit" routerLink="/dashboard">Cancelar</button>
-        <button class="btn-submit">Agregar</button>
+                <!--Upload Misic File-->
+                <div class="upload-music">
+                    <button type="button" class="btn-submit" (click)="musicFile.click($event)">Agrega Musica</button>
+                    <div *ngIf="!musicFile?.files[0]?.name; else templateName">
+                        <h5>No hay archivo seleccionado</h5>
+                    </div>
+                    <div>
+                        <ng-template #templateName>
+                            <h5> {{ musicFile?.files[0]?.name }}</h5>
+                        </ng-template>
+                    </div>
+                    <input name="audio" hidden type="file" accept=".mp3,.mp4" #musicFile
+                        (change)="onMusicSelected($event)" />
+                </div>
 
-      </div>
-    </form>
-  </div>
+            </div>
+            <div>
+                <button class="btn-submit" routerLink="/dashboard">Cancelar</button>
+                <button type="submit" class=" btn-submit">Agregar</button>
+
+            </div>
+        </form>
+    </div>
 </div>
