@@ -35,8 +35,7 @@ export class MusicControlsComponent implements OnInit {
   }
 
   playSong(){
-    const audio: HTMLMediaElement = document.querySelector('#bictiaMusic') as HTMLMediaElement;
-    this.service.playSong(audio);
+    this.service.playSong();
   }
 
   /**

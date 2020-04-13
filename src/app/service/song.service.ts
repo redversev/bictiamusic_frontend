@@ -32,7 +32,8 @@ export class SongService {
    * @param song Como parametro recibe un elemento HTMLMediaElement
    * @constant image La imagen que va a mostrar el icono de play/pause
    */
-  playSong(song){
+  playSong(){
+  	const song: HTMLMediaElement = document.querySelector('#bictiaMusic') as HTMLMediaElement
     const image = document.querySelector('#playImage');
     if (song.paused) {
       song.play();
@@ -87,9 +88,10 @@ createSong(body, imageFile, audioFile) {
   changeSong(song) {
     this.playingSong._id = song._id;
     this.playingSong.artist = song.artist;
-    this.playingSong.audio = song.audio;
+    this.playingSong.audio = `http://localhost:3000/api/music/audio/${song.audio}`;
     this.playingSong.discName = song.discName;
     this.playingSong.name = song.name;
+    this.playSong();
   }
 
   /**
