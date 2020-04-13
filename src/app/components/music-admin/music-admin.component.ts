@@ -1,19 +1,17 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
-import { Song } from '../../models/song';
-import { SongService } from '../../service/song.service';
-import Swal from 'sweetalert2';
+import { Component, OnInit, OnChanges } from "@angular/core";
+import { Song } from "../../models/song";
+import { SongService } from "../../service/song.service";
+import Swal from "sweetalert2";
 
 @Component({
-  selector: 'app-music-admin',
-  templateUrl: './music-admin.component.html',
-  styleUrls: ['./music-admin.component.css']
+  selector: "app-music-admin",
+  templateUrl: "./music-admin.component.html",
+  styleUrls: ["./music-admin.component.css"],
 })
 export class MusicAdminComponent implements OnInit, OnChanges {
-
   public songs: Song[];
 
-  constructor( private service: SongService ) {
-  }
+  constructor(private service: SongService) {}
 
   ngOnInit(): void {
     this.getSongs();
@@ -23,64 +21,64 @@ export class MusicAdminComponent implements OnInit, OnChanges {
     this.getSongs();
   }
 
-  getSongs(){
-    this.service.getSongs().subscribe( (res: any) => {
+  getSongs() {
+    this.service.getSongs().subscribe((res: any) => {
       switch (res.statusCode) {
         case 400:
-          alert('No hay canciones registradas');
+          Swal.fire({
+            icon: "error",
+            text: "No hay canciones registradas",
+          });
           break;
         case 200:
-          console.log('Listado de canciones');
+          console.log("Listado de canciones");
           this.songs = res.music;
           break;
         default:
-          alert('Error de conexión');
+          alert("Error de conexión");
           break;
       }
     });
   }
 
   changeSong(song) {
-    const audio: HTMLMediaElement = document.getElementById('bictiaMusic') as HTMLMediaElement;
-    audio.setAttribute('src', song.audio + '.mp3');
+    const audio: HTMLMediaElement = document.getElementById(
+      "bictiaMusic"
+    ) as HTMLMediaElement;
+    audio.setAttribute("src", song.audio + ".mp3");
     this.service.playSong(audio);
-    document.querySelector('.songName').textContent = song.name;
-    document.querySelector('.author').textContent = song.artist;
-    document.querySelector('.album').textContent = song.discName;
+    document.querySelector(".songName").textContent = song.name;
+    document.querySelector(".author").textContent = song.artist;
+    document.querySelector(".album").textContent = song.discName;
   }
 
-  deleteSong(idSong){
+  deleteSong(idSong) {
     Swal.fire({
-      title: '¿Esta seguro que desea eliminar esta canción?',
-      icon: 'warning',
+      title: "¿Esta seguro que desea eliminar esta canción?",
+      icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Si, eliminar esta canción!'
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Si, eliminar esta canción!",
     }).then((result) => {
       if (result.value) {
-        Swal.fire(
-          'Eliminada!',
-          'La canción ha sido eliminada!',
-          'success'
-        )
-        this.service.deleteSong(idSong).subscribe( (res: any) => {
+        Swal.fire("Eliminada!", "La canción ha sido eliminada!", "success");
+        this.service.deleteSong(idSong).subscribe((res: any) => {
           console.log(res);
           switch (res.statusCode) {
             case 400:
-              alert('Error al eliminar la canción');
+              alert("Error al eliminar la canción");
               break;
             case 200:
-              console.log('Canción eliminada correctamente!');
+              console.log("Canción eliminada correctamente!");
               this.getSongs();
               break;
             default:
-              alert('Error del servidor');
+              alert("Error del servidor");
               break;
           }
         });
       }
-    })
+    });
   }
-
 }
