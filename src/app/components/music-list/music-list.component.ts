@@ -1,48 +1,53 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
-import { Song } from '../../models/song';
-import { SongService } from '../../service/song.service';
+import { Component, OnInit, OnChanges } from "@angular/core";
+import { Song } from "../../models/song";
+import { SongService } from "../../service/song.service";
+import Swal from "sweetalert2";
 
 @Component({
-  selector: 'app-music-list',
-  templateUrl: './music-list.component.html',
-  styleUrls: ['./music-list.component.css']
+  selector: "app-music-list",
+  templateUrl: "./music-list.component.html",
+  styleUrls: ["./music-list.component.css"],
 })
-export class MusicListComponent implements OnInit, OnChanges{
-
+export class MusicListComponent implements OnInit, OnChanges {
   public songs: Song[];
 
-  constructor(public service: SongService) {
-  }
+  constructor(public service: SongService) {}
 
   ngOnInit(): void {
     this.getSongs();
     this.getSongByName();
   }
 
-  ngOnChanges(): void{
+  ngOnChanges(): void {
     this.getSongs();
   }
 
-  getSongs(){
-    localStorage.removeItem('dataSong');
-    this.service.getSongs().subscribe( (res: any) => {
+  getSongs() {
+    localStorage.removeItem("dataSong");
+    this.service.getSongs().subscribe((res: any) => {
       switch (res.statusCode) {
         case 400:
-          alert('No hay canciones registradas');
+          Swal.fire({
+            icon: "error",
+            text: "No hay canciones registradas",
+          });
           break;
         case 200:
-          console.log('Listado de canciones');
+          console.log("Listado de canciones");
           this.songs = res.music;
           break;
         default:
-          alert('Error de conexión');
+          Swal.fire({
+            icon: "error",
+            text: "Error de conexión",
+          });
           break;
       }
     });
   }
 
-  getSongByName(){
-    let song = JSON.parse(localStorage.getItem('dataSong'));
+  getSongByName() {
+    let song = JSON.parse(localStorage.getItem("dataSong"));
     if (song !== null) {
       this.songs = song;
       console.log(this.songs);
@@ -50,7 +55,7 @@ export class MusicListComponent implements OnInit, OnChanges{
   }
 
   addFav(song) {
-    const user = JSON.parse(localStorage.getItem('user'));
+    const user = JSON.parse(localStorage.getItem("user"));
     this.service.addFavSong(song._id, user._id).subscribe((res: any) => {
       console.log(res);
     });
